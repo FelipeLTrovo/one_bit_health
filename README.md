@@ -16,6 +16,14 @@ Criadores:
 - Fábio Vilhena.
 - Felipe Leal Trovo.
 
+# Principais tecnologias/Gemas
+[Framework - Rails 6.0](https://rubygems.org/gems/rails/versions/4.2.6?locale=pt-BR)  
+[Autenticação - Devise](https://github.com/heartcombo/devise)  
+[Permissionamento - CanCanCan](https://github.com/CanCanCommunity/cancancan)  
+[Teste Unitários - Rspec](https://github.com/rspec/rspec)  
+[Documentação das classes - Annotate](https://github.com/ctran/annotate_models)  
+[Cobertura de testes - Simplecov](https://github.com/simplecov-ruby/simplecov)  
+
 # Exigências
 
 **:warning: Atenção:** É necessário que os desenvolvedores usem o Docker no seu ambiente de desenvolvimento.
@@ -107,6 +115,9 @@ RAILS_ENV=test rails db:migrate
 ```sh
 rspec
 ```
+
+### Acessar cobertura de testes(Simplecov):
+coverage/index.html
 
 # Como subir servidor de e-mails(MailCatcher)
 
