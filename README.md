@@ -2,6 +2,20 @@
 
 👋 Olá, Seja Bem-vindo(a) ao OneBitHealth.
 
+O aplicativo criado no hackaton do Bootcamp do Onebitcode que tem a função de:
+- Marcar consultas.
+- Guardar histórico de saúde.
+- Permitir o compartilhamento do usuário 'paciente' com o usuário 'médico' ou outros perfis.
+- Centralizar e categorizar documentos relacionados a saúde do usuário.
+
+Criadores:
+- César Ryan.
+- Claudi Martins de Freitas.
+- Emerson Duarte.
+- Fabio Muller.
+- Fábio Vilhena.
+- Felipe Leal Trovo.
+
 # Exigências
 
 **:warning: Atenção:** É necessário que os desenvolvedores usem o Docker no seu ambiente de desenvolvimento.
@@ -93,6 +107,16 @@ RAILS_ENV=test rails db:migrate
 ```sh
 rspec
 ```
+
+# Como subir servidor de e-mails(MailCatcher)
+
+### Abra um novo terminal execute:
+```sh
+docker-compose run --rm mailcatcher
+```
+### Acesse a porta 1080 para ver o mailcatcher:
+[localhost:1080](localhost:1080)
+
 # Referências utilizadas
 
 [1° Criar docker-compose para Ruby on Rails](https://docs.docker.com/compose/rails/)  
