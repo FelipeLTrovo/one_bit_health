@@ -15,7 +15,7 @@
 #
 FactoryBot.define do
   factory :user do
-    role 1
-    name "MyString"
+    role User::ROLES.keys.sample
+    sequence(:name) {|n| "User - #{n}"}
   end
 end
