@@ -12,6 +12,7 @@ Criadores:
 - César Ryan.
 - Claudi Martins de Freitas.
 - Emerson Duarte.
+- Igor Batista.
 - Fabio Muller.
 - Fábio Vilhena.
 - Felipe Leal Trovo.
