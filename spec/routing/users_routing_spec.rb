@@ -1,4 +1,4 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.describe UsersController, type: :routing do
   describe "routing" do
@@ -18,9 +18,8 @@ RSpec.describe UsersController, type: :routing do
       expect(:get => "/users/1/edit").to route_to("users#edit", :id => "1")
     end
 
-
     it "routes to #create" do
-      expect(:post => "/users").to route_to("users#create")
+      expect(:post => "/users").to route_to("devise/registrations#create")
     end
 
     it "routes to #update via PUT" do

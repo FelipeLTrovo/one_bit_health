@@ -25,4 +25,7 @@ class User < ApplicationRecord
    }
 
    enum role: ROLES
+
+   validates :role, presence: true
+   validates :email, uniqueness: true
 end

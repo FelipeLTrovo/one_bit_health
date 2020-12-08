@@ -15,7 +15,9 @@
 #
 FactoryBot.define do
   factory :user do
-    role User::ROLES.keys.sample
     sequence(:name) {|n| "User - #{n}"}
+    sequence(:email) {|n| "teste_#{n}@teste.com"}
+    sequence(:password) {|n| "teste#{"%08d" % n}"}
+    role :admin
   end
 end
