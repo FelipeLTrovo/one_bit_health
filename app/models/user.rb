@@ -18,14 +18,16 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  
+  before_validation {|item| item.role = :patient}
+  
+  ROLES = {
+    admin: 0,
+    patient: 1
+  }
 
-   ROLES = {
-     admin: 0,
-     patient: 1
-   }
+  enum role: ROLES
 
-   enum role: ROLES
-
-   validates :role, presence: true
-   validates :email, uniqueness: true
+  validates :role, presence: true
+  validates :email, uniqueness: true
 end
