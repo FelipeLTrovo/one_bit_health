@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @appointment.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @appointment.description %>
+</p>
+
+<p>
+  <strong>Professional:</strong>
+  <%= @appointment.professional %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= date_format(@appointment.date) %>
+</p>
+
+<!--TODO: render exams-->
+<p>
+  <strong>Exames:</strong>
+  <ul>
+    <% @appointment_exams.each do |exam| %>
+      <li><%= link_to exam[:title], "exams_path(exam)" %></li>
+      <ul>
+        <br>
+        <strong>Tratamentos:</strong>
+        <%= link_to 'Novo Tratamento', "new_tratament_path" %>
+        <br>
+        <br>
+
+        <% @appointment_exam_trataments.each do |tratament| %>
+          <li>
+            <%= link_to tratament[:title], "trataments_path(tratament)" %>
+          </li>
+        <% end %>
+      </ul>
+
+    <% end %>
+  </ul>
+
+</p>
+
+<%= link_to 'Editar', edit_appointment_path(@appointment) %> |
+<%= link_to 'Voltar', appointments_path %>

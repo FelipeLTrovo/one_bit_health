@@ -42,4 +42,7 @@ module ApplicationHelper
       return "info fa fa-info-circle"
     end
   end
+  def date_format(date)
+    date.strftime("%d/%m/%Y - %Hh%M")
+  end
 end
