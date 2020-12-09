@@ -6,14 +6,7 @@ RSpec.describe UsersController, type: :controller do
       http_login
     end
 
-    let(:valid_attributes) {
-      {
-        email: "teste@teste.com",
-        password: "password",
-        name: "Administrador",
-        role: :admin
-      }
-    }
+    let(:valid_attributes) { FactoryBot.attributes_for(:user) }
 
     let(:invalid_attributes) {
       {
