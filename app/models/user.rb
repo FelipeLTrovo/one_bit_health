@@ -20,6 +20,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   before_validation {|item| item.role = :patient}
+  has_many :treatments
   
   ROLES = {
     admin: 0,
