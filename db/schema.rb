@@ -39,10 +39,12 @@ ActiveRecord::Schema.define(version: 2020_12_09_151025) do
 =======
   create_table "shareds", force: :cascade do |t|
     t.bigint "user_id", null: false
+    t.bigint "professional_id"
     t.string "sharedable_type", null: false
     t.bigint "sharedable_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["professional_id"], name: "index_shareds_on_professional_id"
     t.index ["sharedable_type", "sharedable_id"], name: "index_shareds_on_sharedable_type_and_sharedable_id"
     t.index ["user_id"], name: "index_shareds_on_user_id"
 >>>>>>> Sets up shared model to user references
@@ -63,4 +65,5 @@ ActiveRecord::Schema.define(version: 2020_12_09_151025) do
   end
 
   add_foreign_key "shareds", "users"
+  add_foreign_key "shareds", "users", column: "professional_id"
 end

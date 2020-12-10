@@ -3,6 +3,7 @@ default: &default
   encoding: unicode
   host: db
   username: postgres
+  user: hackathon
   password: password
   pool: 5
 

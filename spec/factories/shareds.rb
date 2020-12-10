@@ -11,10 +11,13 @@
 #
 FactoryBot.define do
   factory :shared do
-    after :build do |shared|
-      shared.sharedable = create(:exam, :appointment, :tratament)
-    end
-    references ""
-    sharedable nil
+
+    # after :build do |shared|
+    #   shared.sharedable = create(:exam, :appointment, :tratament)
+    # end
+    user
+    professional_id factory: :user
+    sharedable_id {rand(1..999)} 
+    sharedable_type {%w[Exam Appoinment Treatment].sample}
   end
 end
