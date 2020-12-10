@@ -15,7 +15,6 @@ RSpec.describe Tag, type: :model do
   describe 'Building tag,' do
     subject { build(:tag) }
     it { is_expected.to belong_to :tagable }
-    it { should validate_presence_of(:content) }
-    it { should validate_uniqueness_of(:content) }
+    it { is_expected.to validate_presence_of(:content) }
   end
 end

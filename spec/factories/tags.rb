@@ -14,7 +14,7 @@ FactoryBot.define do
     sequence(:content) {|n| "Tag - #{n}"}
 
     after :build do |tag|
-      # tag.productable = create()
+      tag.tagable = create(:treatment)
     end
   end
 end
