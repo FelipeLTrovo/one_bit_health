@@ -6,8 +6,8 @@ RSpec.describe "treatments/edit", type: :view do
       title: "MyString",
       description: "MyText",
       local: "MyString",
-      kind: "",
-      user: nil
+      kind: 1,
+      appointment: nil
     ))
   end
 
@@ -24,7 +24,7 @@ RSpec.describe "treatments/edit", type: :view do
 
       assert_select "input[name=?]", "treatment[kind]"
 
-      assert_select "input[name=?]", "treatment[user_id]"
+      assert_select "input[name=?]", "treatment[appointment_id]"
     end
   end
 end

@@ -6,8 +6,8 @@ RSpec.describe "treatments/show", type: :view do
       title: "Title",
       description: "MyText",
       local: "Local",
-      kind: "",
-      user: nil
+      kind: 2,
+      appointment: nil
     ))
   end
 
@@ -16,7 +16,7 @@ RSpec.describe "treatments/show", type: :view do
     expect(rendered).to match(/Title/)
     expect(rendered).to match(/MyText/)
     expect(rendered).to match(/Local/)
-    expect(rendered).to match(//)
+    expect(rendered).to match(/2/)
     expect(rendered).to match(//)
   end
 end

@@ -10,7 +10,7 @@
       <th>Date</th>
       <th>Local</th>
       <th>Kind</th>
-      <th>User</th>
+      <th>Appointment</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,7 +23,7 @@
         <td><%= treatment.date %></td>
         <td><%= treatment.local %></td>
         <td><%= treatment.kind %></td>
-        <td><%= treatment.user_id %></td>
+        <td><%= treatment.appointment_id %></td>
         <td><%= link_to 'Show', treatment %></td>
         <td><%= link_to 'Edit', edit_treatment_path(treatment) %></td>
         <td><%= link_to 'Destroy', treatment, method: :delete, data: { confirm: 'Are you sure?' } %></td>

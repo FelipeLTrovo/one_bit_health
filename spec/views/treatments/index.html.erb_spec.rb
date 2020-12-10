@@ -7,15 +7,15 @@ RSpec.describe "treatments/index", type: :view do
         title: "Title",
         description: "MyText",
         local: "Local",
-        kind: "",
-        user: nil
+        kind: 2,
+        appointment: nil
       ),
       Treatment.create!(
         title: "Title",
         description: "MyText",
         local: "Local",
-        kind: "",
-        user: nil
+        kind: 2,
+        appointment: nil
       )
     ])
   end
@@ -25,7 +25,7 @@ RSpec.describe "treatments/index", type: :view do
     assert_select "tr>td", text: "Title".to_s, count: 2
     assert_select "tr>td", text: "MyText".to_s, count: 2
     assert_select "tr>td", text: "Local".to_s, count: 2
-    assert_select "tr>td", text: "".to_s, count: 2
+    assert_select "tr>td", text: 2.to_s, count: 2
     assert_select "tr>td", text: nil.to_s, count: 2
   end
 end

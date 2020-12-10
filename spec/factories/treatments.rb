@@ -2,9 +2,9 @@ FactoryBot.define do
   factory :treatment do
     title "MyString"
     description "MyText"
-    date "2020-12-09 19:04:30"
+    date "2020-12-10 16:57:15"
     local "MyString"
-    kind ""
-    user nil
+    kind 1
+    appointment nil
   end
 end
