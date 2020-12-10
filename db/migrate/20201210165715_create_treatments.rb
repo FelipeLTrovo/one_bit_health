@@ -6,7 +6,6 @@ class CreateTreatments < ActiveRecord::Migration[6.0]
       t.datetime :date
       t.string :local
       t.integer :kind
-      t.references :appointment, null: false, foreign_key: true
 
       t.timestamps
     end
