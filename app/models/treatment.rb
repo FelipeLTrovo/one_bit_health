@@ -12,4 +12,5 @@
 #  updated_at  :datetime         not null
 #
 class Treatment < ApplicationRecord
+  has_many :tags, as: :tagable
 end
