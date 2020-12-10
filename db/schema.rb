@@ -10,11 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_10_175128) do
+
+=======
+ActiveRecord::Schema.define(version: 2020_12_09_151025) do
+>>>>>>> Sets up shared model to user references
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< HEAD
   create_table "tags", force: :cascade do |t|
     t.string "content"
     t.string "tagable_type", null: false
@@ -32,6 +36,16 @@ ActiveRecord::Schema.define(version: 2020_12_10_175128) do
     t.integer "kind"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+=======
+  create_table "shareds", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "sharedable_type", null: false
+    t.bigint "sharedable_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["sharedable_type", "sharedable_id"], name: "index_shareds_on_sharedable_type_and_sharedable_id"
+    t.index ["user_id"], name: "index_shareds_on_user_id"
+>>>>>>> Sets up shared model to user references
   end
 
   create_table "users", force: :cascade do |t|
@@ -48,4 +62,5 @@ ActiveRecord::Schema.define(version: 2020_12_10_175128) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "shareds", "users"
 end
