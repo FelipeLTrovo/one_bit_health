@@ -16,3 +16,37 @@
  *= require material/material-dashboard.css
  *= require material/demo.css
  */
+
+.alert-notify {
+  display: inline-block;
+  margin: 0px auto;
+  position: fixed;
+  z-index: 2000;
+  bottom: 20px;
+  left: 0px;
+  right: 0px;
+  max-width: 600px;
+  width: calc(100% - 30px);
+  padding-right: 80px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  color: rgba(255,255,255,0.85);
+}
+
+.vertical-center {
+  min-height: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.background-body {
+  background-image: url("background1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.background-logo {
+  background-image: url("logo.png");
+  width: 20px;
+}
