@@ -20,12 +20,16 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+
 # theme
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem "jquery-rails"
 gem 'popper_js', '~> 1.12.9'
 gem 'uglifier', '>= 1.3.0'
+
+# For bash identation
+gem 'awesome_print', '~> 1.6', '>= 1.6.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
