@@ -12,5 +12,9 @@
 require 'rails_helper'
 
 RSpec.describe TagKind, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'Building tag,' do
+    subject { build(:tag_kind) }
+    it { is_expected.to belong_to :tagable }
+    it { is_expected.to belong_to :tag }
+  end
 end
