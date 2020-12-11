@@ -15,7 +15,17 @@ ActiveRecord::Schema.define(version: 2020_12_11_005832) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-<<<<<<< HEAD
+  create_table "appointments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "title"
+    t.text "description"
+    t.string "professional"
+    t.datetime "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_appointments_on_user_id"
+  end
+
   create_table "tag_kinds", force: :cascade do |t|
     t.bigint "tag_id", null: false
     t.string "tagable_type", null: false
@@ -40,17 +50,6 @@ ActiveRecord::Schema.define(version: 2020_12_11_005832) do
     t.integer "kind"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-=======
-  create_table "appointments", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.string "title"
-    t.string "description"
-    t.string "professional"
-    t.datetime "date"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_appointments_on_user_id"
->>>>>>> Appointments scaffold generated
   end
 
   create_table "users", force: :cascade do |t|
@@ -67,9 +66,6 @@ ActiveRecord::Schema.define(version: 2020_12_11_005832) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-<<<<<<< HEAD
-  add_foreign_key "tag_kinds", "tags"
-=======
   add_foreign_key "appointments", "users"
->>>>>>> Appointments scaffold generated
+  add_foreign_key "tag_kinds", "tags"
 end
