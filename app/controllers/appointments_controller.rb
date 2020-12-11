@@ -20,7 +20,7 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments/new
   def new
-    @appointment = current_user.appointments.new
+    @appointment = Appointment.new(user: current_user)
   end
 
   # GET /appointments/1/edit
