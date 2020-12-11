@@ -1,0 +1,5 @@
+pt-BR:  
+  activerecord:
+    errors:
+      messages:
+        future_date: "deveriam ser 7 dias"

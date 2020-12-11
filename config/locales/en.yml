@@ -30,4 +30,7 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      messages:
+        future_date: "should a 7 days"

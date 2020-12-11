@@ -1,6 +1,7 @@
 class SharedsController < ApplicationController
   # POST /shareds
   # POST /shareds.json
+
   def create
     @shared = Shared.new(shared_params)
 
@@ -18,6 +19,8 @@ class SharedsController < ApplicationController
   private 
 
   def shared_params
-    params.require(:shared).permit(:duedate)
+    params.require(:shared).permit(:user_id, :professional_id)
   end
+
+
 end
