@@ -12,5 +12,8 @@
 #  updated_at  :datetime         not null
 #
 class Treatment < ApplicationRecord
-  has_many :tags, as: :tagable
+  has_many :tag_kinds, as: :tagable, dependent: :destroy
+  has_many :tags, through: :tag_kinds
+
+  validates :title, :description, :date, :local, :kind, presence: true
 end

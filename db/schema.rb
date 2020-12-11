@@ -10,18 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_10_175128) do
+ActiveRecord::Schema.define(version: 2020_12_11_005832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "tags", force: :cascade do |t|
-    t.string "content"
+  create_table "tag_kinds", force: :cascade do |t|
+    t.bigint "tag_id", null: false
     t.string "tagable_type", null: false
     t.bigint "tagable_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["tagable_type", "tagable_id"], name: "index_tags_on_tagable_type_and_tagable_id"
+    t.index ["tag_id"], name: "index_tag_kinds_on_tag_id"
+    t.index ["tagable_type", "tagable_id"], name: "index_tag_kinds_on_tagable_type_and_tagable_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "treatments", force: :cascade do |t|
@@ -48,4 +55,5 @@ ActiveRecord::Schema.define(version: 2020_12_10_175128) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "tag_kinds", "tags"
 end
