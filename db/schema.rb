@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_09_151025) do
+ActiveRecord::Schema.define(version: 2020_12_10_175128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "shareds", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.date "duedate"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_shareds_on_user_id"
+  end
 
   create_table "tags", force: :cascade do |t|
     t.string "content"
@@ -34,17 +42,6 @@ ActiveRecord::Schema.define(version: 2020_12_09_151025) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "shareds", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.string "sharedable_type", null: false
-    t.bigint "sharedable_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["professional_id"], name: "index_shareds_on_professional_id"
-    t.index ["sharedable_type", "sharedable_id"], name: "index_shareds_on_sharedable_type_and_sharedable_id"
-    t.index ["user_id"], name: "index_shareds_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.integer "role"
     t.string "name"
@@ -60,5 +57,4 @@ ActiveRecord::Schema.define(version: 2020_12_09_151025) do
   end
 
   add_foreign_key "shareds", "users"
-  add_foreign_key "shareds", "users", column: "professional_id"
 end

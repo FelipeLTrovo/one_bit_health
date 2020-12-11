@@ -12,12 +12,6 @@
 require 'rails_helper'
 
 RSpec.describe Shared, type: :model do
-  # subject { build(:shared) }
-
   it { is_expected.to belong_to :user }
-  it { is_expected.to belong_to :professional }
-  it { is_expected.to validate_presence_of(:user_id) }
-  it { is_expected.to validate_presence_of(:professional_id) }
-  it { is_expected.to validate_presence_of(:sharedable_id) }
-  it { is_expected.to validate_presence_of(:sharedable_type) }
+  it { is_expected.to validate_presence_of :duedate }
 end
