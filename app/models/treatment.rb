@@ -10,8 +10,8 @@
 #  kind         :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
-#  tagable_type :string           not null
-#  tagable_id   :bigint           not null
+#  tagable_type :string
+#  tagable_id   :bigint
 #
 class Treatment < ApplicationRecord
   has_many :tag_kinds, as: :tagable, dependent: :destroy
