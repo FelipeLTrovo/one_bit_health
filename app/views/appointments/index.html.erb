@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Minhas Consultas</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Profissional</th>
+      <th>Data</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @appointments.each do |appointment| %>
+      <tr>
+        <td><%= appointment.title %></td>
+        <td><%= appointment.professional %></td>
+        <td><%= date_format(appointment.date) %></td>
+        <td><%= link_to 'Ver', appointment %></td>
+        <td><%= link_to 'Editar', edit_appointment_path(appointment) %></td>
+        <!--<td><%= link_to 'Excluir', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nova Consulta', new_appointment_path %>

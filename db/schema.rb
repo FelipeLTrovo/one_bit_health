@@ -15,6 +15,17 @@ ActiveRecord::Schema.define(version: 2020_12_11_005832) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "appointments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "title"
+    t.text "description"
+    t.string "professional"
+    t.datetime "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_appointments_on_user_id"
+  end
+
   create_table "tag_kinds", force: :cascade do |t|
     t.bigint "tag_id", null: false
     t.string "tagable_type", null: false
@@ -55,5 +66,6 @@ ActiveRecord::Schema.define(version: 2020_12_11_005832) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "appointments", "users"
   add_foreign_key "tag_kinds", "tags"
 end
