@@ -27,6 +27,7 @@ gem 'font-awesome-rails'
 gem "jquery-rails"
 gem 'popper_js', '~> 1.12.9'
 gem 'uglifier', '>= 1.3.0'
+gem 'simple_form', '5.0.3'
 
 # For bash identation
 gem 'awesome_print', '~> 1.6', '>= 1.6.1'
