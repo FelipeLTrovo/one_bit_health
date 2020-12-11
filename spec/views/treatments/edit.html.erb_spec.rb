@@ -5,9 +5,9 @@ RSpec.describe "treatments/edit", type: :view do
     @treatment = assign(:treatment, Treatment.create!(
       title: "MyString",
       description: "MyText",
+      date: "2020-12-10 16:57:15",
       local: "MyString",
-      kind: 1,
-      appointment: nil
+      kind: 1
     ))
   end
 
@@ -24,7 +24,6 @@ RSpec.describe "treatments/edit", type: :view do
 
       assert_select "input[name=?]", "treatment[kind]"
 
-      assert_select "input[name=?]", "treatment[appointment_id]"
     end
   end
 end

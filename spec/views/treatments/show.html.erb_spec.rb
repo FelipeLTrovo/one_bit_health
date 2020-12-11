@@ -5,9 +5,9 @@ RSpec.describe "treatments/show", type: :view do
     @treatment = assign(:treatment, Treatment.create!(
       title: "Title",
       description: "MyText",
+      date: "2020-12-10 16:57:15",
       local: "Local",
-      kind: 2,
-      appointment: nil
+      kind: 2
     ))
   end
 
@@ -17,6 +17,5 @@ RSpec.describe "treatments/show", type: :view do
     expect(rendered).to match(/MyText/)
     expect(rendered).to match(/Local/)
     expect(rendered).to match(/2/)
-    expect(rendered).to match(//)
   end
 end
