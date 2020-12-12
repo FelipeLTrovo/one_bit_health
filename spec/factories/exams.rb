@@ -2,22 +2,16 @@
 #
 # Table name: exams
 #
-#  id          :bigint           not null, primary key
-#  description :text
-#  exam_date   :date
-#  place       :string
-#  title       :string
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  user_id     :bigint           not null
-#
-# Indexes
-#
-#  index_exams_on_user_id  (user_id)
-#
-# Foreign Keys
-#
-#  fk_rails_...  (user_id => users.id)
+#  id           :bigint           not null, primary key
+#  user_id      :bigint           not null
+#  title        :string
+#  description  :text
+#  exam_date    :date
+#  place        :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  tagable_type :string           not null
+#  tagable_id   :bigint           not null
 #
 FactoryBot.define do
   factory :exam do
@@ -26,5 +20,9 @@ FactoryBot.define do
     exam_date { Time.now }
     place "MyString"
     user_id { create(:user).id }
+
+    after :create do |exam|
+      create(:tag_kind, tag: create(:tag), tagable: exam)
+    end
   end
 end

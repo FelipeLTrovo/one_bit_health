@@ -3,22 +3,14 @@
 # Table name: treatments
 #
 #  id          :bigint           not null, primary key
-#  date        :datetime
-#  description :text
-#  kind        :integer
-#  local       :string
+#  user_id     :bigint           not null
 #  title       :string
+#  description :text
+#  date        :datetime
+#  local       :string
+#  kind        :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  user_id     :bigint           not null
-#
-# Indexes
-#
-#  index_treatments_on_user_id  (user_id)
-#
-# Foreign Keys
-#
-#  fk_rails_...  (user_id => users.id)
 #
 require 'rails_helper'
 
