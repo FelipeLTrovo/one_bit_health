@@ -25,6 +25,8 @@ class Treatment < ApplicationRecord
   has_many :tags, through: :tag_kinds
   belongs_to :user
 
+  enum kind: {medicamento: 0, cirurgia: 1, terapia: 2, alternativo: 3}
+
   validates :title, :description, :date, :local, :kind, presence: true
 
   has_many_attached :files
