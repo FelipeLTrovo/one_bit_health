@@ -18,5 +18,6 @@ module Myapp
     config.to_prepare do
       Devise::RegistrationsController.layout "devise"
     end
+    config.autoload_paths += %W["#{config.root}/app/validators/"]
   end
 end
