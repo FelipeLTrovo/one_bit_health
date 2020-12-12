@@ -3,13 +3,13 @@ module ApplicationHelper
     if self.try(:resource)
       if flash.any?
         messages = flash.map do |type, message|
-          classes = "alert alert-notify alert-"
+          classes = "alert alert-auto-close alert-notify alert-"
           classes << get_type_notify(type)
           content_tag(:div, message, class: classes)
         end.join
       elsif resource.errors.any?
         message = resource.errors.full_messages.to_sentence
-        messages = content_tag(:div, message, class: "alert alert-notify alert-danger")
+        messages = content_tag(:div, message, class: "alert alert-notify alert-danger alert-auto-close")
       end
 
       messages.html_safe if messages
@@ -19,7 +19,7 @@ module ApplicationHelper
   def display_flash_messages
     if flash.any?
       messages = flash.map do |type, message|
-        classes = "alert alert-notify alert-"
+        classes = "alert alert-auto-close alert-notify alert-"
         classes << get_type_notify(type)
         content_tag(:div, message, class: classes)
       end.join
@@ -28,18 +28,26 @@ module ApplicationHelper
     messages.html_safe if messages
   end
 
+  def display_flash_messages_object(object)
+    message = object.errors.full_messages.to_sentence
+    if message.present?
+      messages = content_tag(:div, message, class: "alert alert-notify alert-danger alert-auto-close")
+      messages.html_safe
+    end
+  end
+
   def get_type_notify(type)
     case type
     when "notice"
-      return "success fa fa-check-circle"
+      return "success"
     when "success"
-      return "success fa fa-check-circle"
+      return "success"
     when "alert"
-      return "warning fa fa-exclamation-triangle"
+      return "warning"
     when "error"
-      return "danger fa fa-times-circle"
+      return "danger"
     else
-      return "info fa fa-info-circle"
+      return "info"
     end
   end
   def date_format(date)
