@@ -19,10 +19,17 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 FactoryBot.define do
-  factory :user do
+  factory :user, class: User do
     sequence(:name) {|n| "User - #{n}"}
     sequence(:email) {|n| "teste_#{n}@teste.com"}
     sequence(:password) {|n| "teste#{"%08d" % n}"}
     role :admin
+  end
+
+  factory :user_patient, class: User do
+    sequence(:name) {|n| "User - #{n}"}
+    sequence(:email) {|n| "teste_#{n}@teste.com"}
+    sequence(:password) {|n| "teste#{"%08d" % n}"}
+    role :patient
   end
 end
