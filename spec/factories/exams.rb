@@ -25,5 +25,6 @@ FactoryBot.define do
     description "Ultrasom de abdomen total"
     exam_date { Time.now }
     place "MyString"
+    user_id { create(:user).id }
   end
 end

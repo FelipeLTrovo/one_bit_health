@@ -9,3 +9,28 @@
   user.password_confirmation = user_seed[:password]
   user.save
 end
+
+FactoryBot.build_list(:user_patient, 5).each do |user|
+  puts "Criando paciente #{user.name} - #{user.role}"
+  user.save
+  puts "Salvo paciente #{user.name} - #{user.role}"
+end
+
+# Criar relacionamentos das tabelas com o admin
+User.where(role: :patient).each do |owner|
+  puts "Criando appointment de: #{owner.name}"
+  FactoryBot.create(:appointment, user: owner)
+  puts "Salvo appointment de: #{owner.name}"
+
+  puts "Criando exam de: #{owner.name}"
+  FactoryBot.create(:exam, user: owner)
+  puts "Salvo exam de: #{owner.name}"
+
+  puts "Criando treatment de: #{owner.name}"
+  FactoryBot.create(:treatment, user: owner)
+  puts "Salvo treatment de: #{owner.name}"
+
+  puts "Criando shared de: #{owner.name}; para: #{User.first.name}"
+  FactoryBot.create(:shared, user: owner, professional: User.first)
+  puts "Salvo shared de: #{owner.name}; para: #{User.first.name}"
+end
