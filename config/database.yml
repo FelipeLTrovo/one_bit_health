@@ -4,7 +4,7 @@ default: &default
   host: db
   username: postgres
   password: password
-  pool: 5
+  pool: 50
 
 development:
   <<: *default

@@ -24,7 +24,7 @@ class TreatmentsController < ApplicationController
   # POST /treatments
   # POST /treatments.json
   def create
-    @treatment = Treatment.new(treatment_params)
+    @treatment = current_user.treatments.new(treatment_params)
 
     respond_to do |format|
       if @treatment.save

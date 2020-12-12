@@ -1,11 +1,24 @@
-# create_table "exams", force: :cascade do |t|
-#   t.string "title"
-#   t.text "description"
-#   t.date "exam_date"
-#   t.string "place"
-#   t.datetime "created_at", precision: 6, null: false
-#   t.datetime "updated_at", precision: 6, null: false
-# end
+# == Schema Information
+#
+# Table name: exams
+#
+#  id          :bigint           not null, primary key
+#  description :text
+#  exam_date   :date
+#  place       :string
+#  title       :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  user_id     :bigint           not null
+#
+# Indexes
+#
+#  index_exams_on_user_id  (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
+#
 require 'rails_helper'
 
 RSpec.describe Exam, type: :model do
