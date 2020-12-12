@@ -27,7 +27,7 @@ FactoryBot.define do
     date "2020-12-10 16:57:15"
     local "MyString"
     kind 1
-
+    user
     after :create do |treatment|
       create(:tag_kind, tag: create(:tag), tagable: treatment)
     end
