@@ -1,22 +1,18 @@
 class AppointmentsController < ApplicationController
+  include Permissions
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
 
   # GET /appointments
   # GET /appointments.json
   def index
-    @appointments = Appointment.where(user: current_user)
+    professional_list = Appointment.where(user: @list).pluck(:id)
+    user_list = Appointment.where(user: current_user).pluck(:id)
+    @appointments = Appointment.where(id: [professional_list, user_list].flatten)
   end
 
   # GET /appointments/1
   # GET /appointments/1.json
-  def show
-    @appointment_exams = @appointment.exams
-  rescue Exception => e
-    testing = [{title: "Exam Test"}]
-    testing2 = [{title: "Tratament Test"}]
-    @appointment_exams = testing
-    @appointment_exam_trataments = testing2
-  end
+  def show; end
 
   # GET /appointments/new
   def new
@@ -70,7 +66,15 @@ class AppointmentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_appointment
-      @appointment = Appointment.find(params[:id])
+      professional_list = Appointment.where(user: @list).pluck(:id)
+      user_list = Appointment.where(user: current_user).pluck(:id)
+      appointments = Appointment.where(id: [professional_list, user_list].flatten)
+      if appointments.blank?
+        @appointment = nil
+        redirect_to root_url, notice: "Registro não encontrado"
+      else
+        @appointment = appointments.find(params[:id])
+      end
     end
 
     # Only allow a list of trusted parameters through.

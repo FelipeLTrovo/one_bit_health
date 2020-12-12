@@ -21,7 +21,7 @@
 #
 FactoryBot.define do
   factory :appointment do
-    user
+    user_id { create(:user).id }
     sequence(:title) { |n| "Title #{n}" } 
     description { Faker::Lorem.sentence } 
     professional { Faker::Name.name }
