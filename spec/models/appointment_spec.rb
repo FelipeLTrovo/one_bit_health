@@ -14,5 +14,10 @@
 require 'rails_helper'
 
 RSpec.describe Appointment, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { is_expected.to belong_to :user }
+  it { is_expected.to validate_presence_of :user_id }
+  it { is_expected.to validate_presence_of :date }
+  it { is_expected.to validate_presence_of :professional }
+  it { is_expected.to have_many(:exams).dependent(:destroy) }
+  #it { is_expected.to have_many(:exmas).dependent(:destroy) }
 end
