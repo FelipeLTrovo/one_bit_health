@@ -3,28 +3,26 @@
 # Table name: appointments
 #
 #  id           :bigint           not null, primary key
-#  date         :datetime
+#  user_id      :bigint           not null
+#  title        :string
 #  description  :text
 #  professional :string
-#  title        :string
+#  date         :datetime
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
-#  user_id      :bigint           not null
-#
-# Indexes
-#
-#  index_appointments_on_user_id  (user_id)
-#
-# Foreign Keys
-#
-#  fk_rails_...  (user_id => users.id)
+#  tagable_type :string           not null
+#  tagable_id   :bigint           not null
 #
 FactoryBot.define do
   factory :appointment do
     user_id { create(:user).id }
-    sequence(:title) { |n| "Title #{n}" } 
-    description { Faker::Lorem.sentence } 
+    sequence(:title) { |n| "Title #{n}" }
+    description { Faker::Lorem.sentence }
     professional { Faker::Name.name }
     date { Time.zone.now }
+
+    after :create do |appointment|
+      create(:tag_kind, tag: create(:tag), tagable: appointment)
+    end
   end
 end
