@@ -4,5 +4,6 @@ FactoryBot.define do
     description "Ultrasom de abdomen total"
     exam_date { Time.now }
     place "MyString"
+    appointment
   end
 end

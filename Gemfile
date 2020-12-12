@@ -47,6 +47,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec-support'
   gem 'pry-rails'
+  gem 'faker', '~> 2.15', '>= 2.15.1'
 end
 
 group :development do
