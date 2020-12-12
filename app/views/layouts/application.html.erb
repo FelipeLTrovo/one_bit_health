@@ -11,30 +11,34 @@
   </head>
 
   <body>
-    <div class="container">
-      <nav class="navbar navbar-expand-lg bg-primary">
-        <div class="container">
-          <a class="navbar-brand" href="#">Health History</a>
-          <a class="navbar-brand" href="/appointments">Appointments</a>
-          <a class="navbar-brand" href="#">Exams</a>
-          <a class="navbar-brand" href="/treatments">Treatments</a>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <%= current_user.email.split("@")[0] %>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <%= link_to('Sair', destroy_user_session_path, method: :delete, class: "dropdown-item") %>
-                </div>
-              </li>
-            </ul>
-          </div>
+    <%= render 'layouts/sidebar_lateral' %>
+    <nav class="navbar navbar-expand-lg bg-primary border-radius-none">
+      <div class="container-fluid">
+        <div class="btn btn-primary btn-just-icon btn-round btn-lg toggle-menu">
+          <i class="material-icons">menu</i>
         </div>
-      </nav>
+        <a class="navbar-brand" href="<%= root_path %>">Health History</a>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" title="<%= current_user.email.split("@")[0] %>" aria-haspopup="true" aria-expanded="false">
+                <i class="material-icons">person</i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
+                <a class="dropdown-item" href="#">Perfil</a>
+                <div class="dropdown-divider"></div>
+                <%= link_to('Sair', destroy_user_session_path, method: :delete, class: "dropdown-item") %>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
+    <div class="container">
       <%= display_flash_messages %>
       <%= yield %>
+      <%= yield :javascript_includes %>
     </div>
   </body>
 </html>

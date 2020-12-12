@@ -7,7 +7,6 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     authenticated :user do
-      root "home#index", as: :authenticated_root
       get "/users/sign_out" => "devise/sessions#destroy"
     end
 
@@ -16,4 +15,6 @@ Rails.application.routes.draw do
       get "about", to: "home#about"
     end
   end
+
+  root "home#index"
 end

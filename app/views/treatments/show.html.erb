@@ -1,37 +1,39 @@
-<p id="notice"><%= notice %></p>
+<div class="card">
+  <div class="card-header card-header-icon card-header-primary">
+    <div class="card-icon">
+      <i class="material-icons">medical_services</i>
+      <span class="text-hedar">Tratamento</span>
+    </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @treatment.title %>
-</p>
+    <div class="card-text float-right rounded-30 p-2">
+      <%= link_to treatments_path, class: "text-white", title: "Voltar" do %>
+        <i class="material-icons">keyboard_backspace</i>
+      <% end %>
+    </div>
+  </div>
+  <div class="card-body">
+    <h4 class="card-title"><%= @treatment.title %></h4>
+    <h6 class="card-subtitle mb-2 text-muted"><%= @treatment.kind %></h6>
+    <p class="card-text"><%= @treatment.description %></p>
+    <p class="card-text">Anexos: </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @treatment.description %>
-</p>
+    <% if @treatment.files.any? %>
+      <% @treatment.files.each do |file| %>
+      <%= link_to file.filename, url_for(file), class: "card-link" %>
+      <% end %>
+    <% else %>
+        <p class="card-text italic">Não há arquivos para este tratamento</p>
+    <% end %>
+  </div>
 
-<p>
-  <strong>Date:</strong>
-  <%= @treatment.date %>
-</p>
-
-<p>
-  <strong>Local:</strong>
-  <%= @treatment.local %>
-</p>
-
-<p>
-  <strong>Kind:</strong>
-  <%= @treatment.kind %>
-</p>
-
-<%= link_to 'Edit', edit_treatment_path(@treatment) %> |
-<%= link_to 'Back', treatments_path %>
-
-<h5>Files</h5>
- 
-<ul>
- <% @treatment.files.each do |file| %>
-    <li><%= link_to file.filename, url_for(file) %></li>
- <% end %>
-</ul>
+  <div class="card-footer">
+    <div class="stats">
+      <i class="material-icons font-icon">access_time</i>
+      <%= @treatment.date.strftime("%d/%m/%Y - %H:%M") %>
+    </div>
+    <div class="stats">
+      <i class="material-icons font-icon">location_on</i>
+      <%= @treatment.local %>
+    </div>
+  </div>
+</div>

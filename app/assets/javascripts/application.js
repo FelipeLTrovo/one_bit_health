@@ -25,7 +25,18 @@
 //= require_tree .
 
 window.setTimeout(function() {
-  $(".alert").fadeTo(500, 0).slideUp(500, function(){
+  $(".alert-auto-close").fadeTo(500, 0).slideUp(500, function(){
       $(this).remove();
   });
 }, 2000);
+
+$(document).on('turbolinks:load', function() {
+  $('.toggle-menu').click(function() {
+    $('#sidebar-lateral').toggleClass('sidebar-lateral-right')
+  })
+
+  $('.linkable').click(function() {
+    var url = $(this).data('url')
+    window.location.href = url
+  })
+})

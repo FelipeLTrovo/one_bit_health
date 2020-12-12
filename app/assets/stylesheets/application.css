@@ -50,3 +50,43 @@
   background-image: url("logo.png");
   width: 20px;
 }
+
+.btn-action-add {
+  position: fixed !important;
+  bottom: 30px;
+  right: 30px;
+}
+
+.rounded-30 {
+  border-radius: 30px;
+}
+
+.sidebar-lateral-left {
+  z-index: 4;
+  top: 77px;
+  left: -260px;
+  position: fixed;
+  transition: 1s;
+}
+
+.sidebar-lateral-right {
+  left: 0px !important;
+}
+
+.border-radius-none {
+  border-radius: 0px;;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.card-footer > .stats > .font-icon {
+  font-size: 22px !important;
+  top: -2px !important;
+}
+
+.card-icon > .text-hedar {
+  position: relative;
+  top: -4px;
+}
