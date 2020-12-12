@@ -20,6 +20,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Exam < ApplicationRecord
+  belongs_to :user
   validates :title, :description, :exam_date, :place, presence: true
 
 end

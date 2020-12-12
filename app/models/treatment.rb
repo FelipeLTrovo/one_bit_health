@@ -23,6 +23,7 @@
 class Treatment < ApplicationRecord
   has_many :tag_kinds, as: :tagable, dependent: :destroy
   has_many :tags, through: :tag_kinds
+  belongs_to :user
 
   validates :title, :description, :date, :local, :kind, presence: true
 
