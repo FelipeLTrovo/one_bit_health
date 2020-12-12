@@ -90,3 +90,36 @@
   position: relative;
   top: -4px;
 }
+
+.card-stats > .stats > .icon-sm {
+  font-size: 17px !important;
+}
+
+.card-stats > .stats > .text-stats {
+  font-size: 12px !important;
+  position: relative;
+  top: -1px;
+  left: 4px;
+}
+
+.card-header > .card-header-text {
+  position: relative;
+  top: -4px;
+  right: 15px;
+}
+
+.card-select:hover{
+  transform: scale(1.05);
+box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+.card-select {
+  transition:
+    .3s transform cubic-bezier(.155,1.105,.295,1.12),
+    .3s box-shadow,
+    .3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+}
+
+.padding-top-6 {
+  padding-top: 6rem;
+}
