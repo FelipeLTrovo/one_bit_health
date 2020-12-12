@@ -35,4 +35,6 @@ class User < ApplicationRecord
 
   validates :role, presence: true
   validates :email, uniqueness: true
+
+  has_many :treatments
 end
