@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_11_012825) do
+ActiveRecord::Schema.define(version: 2020_12_12_001119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,13 +26,16 @@ ActiveRecord::Schema.define(version: 2020_12_11_012825) do
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
-  create_table "exams", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.date "exam_date"
-    t.string "place"
+  create_table "shareds", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.date "duedate"
+    t.bigint "professional_id"
+    t.bigint "integer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["integer_id"], name: "index_shareds_on_integer_id"
+    t.index ["professional_id"], name: "index_shareds_on_professional_id"
+    t.index ["user_id"], name: "index_shareds_on_user_id"
   end
 
   create_table "tag_kinds", force: :cascade do |t|
@@ -79,5 +82,8 @@ ActiveRecord::Schema.define(version: 2020_12_11_012825) do
   end
 
   add_foreign_key "appointments", "users"
+  add_foreign_key "shareds", "users"
+  add_foreign_key "shareds", "users", column: "integer_id"
+  add_foreign_key "shareds", "users", column: "professional_id"
   add_foreign_key "tag_kinds", "tags"
 end
