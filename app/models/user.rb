@@ -37,4 +37,5 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
 
   has_many :treatments
+  has_many :appointments
 end

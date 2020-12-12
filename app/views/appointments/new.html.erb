@@ -1,5 +1,15 @@
-<h1>Nova Consulta</h1>
+<div class="card">
+  <div class="card-header card-header-text card-header-primary">
+    <div class="card-text">
+      <h4 class="card-title">Nova Consulta</h4>
+    </div>
 
-<%= render 'form', appointment: @appointment %>
+    <div class="card-text float-right rounded-30 p-2">
+      <%= link_to  appointments_path, class: "text-white", title: "Voltar" do %>
+        <i class="material-icons">keyboard_backspace</i>
+      <% end %>
+    </div>
+  </div>
 
-<%= link_to 'Voltar', appointments_path %>
+  <%= render 'form', appointment: @appointment %>
+</div>

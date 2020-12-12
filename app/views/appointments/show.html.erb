@@ -1,49 +1,35 @@
-<p id="notice"><%= notice %></p>
+<div class="card">
+  <div class="card-header card-header-icon card-header-primary">
+    <div class="card-icon">
+      <i class="material-icons">medical_services</i>
+      <span class="text-hedar">Consulta</span>
+    </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @appointment.title %>
-</p>
+    <div class="card-text float-right rounded-30 p-2">
+      <%= link_to appointments_path, class: "text-white", title: "Voltar" do %>
+        <i class="material-icons">keyboard_backspace</i>
+      <% end %>
+    </div>
+  </div>
+  <div class="card-body">
+    <h4 class="card-title"><%= @appointment.title %></h4>
+    <h6 class="card-subtitle mb-2 text-muted"><%= @appointment.professional %></h6>
+    <p class="card-text"><%= @appointment.description %></p>
+    <p class="card-text">Anexos: </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @appointment.description %>
-</p>
-
-<p>
-  <strong>Professional:</strong>
-  <%= @appointment.professional %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= date_format(@appointment.date) %>
-</p>
-
-<!--TODO: render exams-->
-<p>
-  <strong>Exames:</strong>
-  <ul>
-    <% @appointment_exams.each do |exam| %>
-      <li><%= link_to exam[:title], "exams_path(exam)" %></li>
-      <ul>
-        <br>
-        <strong>Tratamentos:</strong>
-        <%= link_to 'Novo Tratamento', "new_tratament_path" %>
-        <br>
-        <br>
-
-        <% @appointment_exam_trataments.each do |tratament| %>
-          <li>
-            <%= link_to tratament[:title], "trataments_path(tratament)" %>
-          </li>
-        <% end %>
-      </ul>
-
+    <% if @appointment.files.any? %>
+      <% @appointment.files.each do |file| %>
+      <%= link_to file.filename, url_for(file), class: "card-link" %>
+      <% end %>
+    <% else %>
+        <p class="card-text italic">Não há arquivos para este tratamento</p>
     <% end %>
-  </ul>
+  </div>
 
-</p>
-
-<%= link_to 'Editar', edit_appointment_path(@appointment) %> |
-<%= link_to 'Voltar', appointments_path %>
+  <div class="card-footer">
+    <div class="stats">
+      <i class="material-icons font-icon">access_time</i>
+      <%= @appointment.date.strftime("%d/%m/%Y - %H:%M") %>
+    </div>
+  </div>
+</div>
