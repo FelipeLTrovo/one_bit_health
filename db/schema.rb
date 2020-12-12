@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 2020_12_12_001119) do
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
+  create_table "exams", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.date "exam_date"
+    t.string "place"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "shareds", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.date "duedate"
@@ -50,11 +59,8 @@ ActiveRecord::Schema.define(version: 2020_12_12_001119) do
 
   create_table "tags", force: :cascade do |t|
     t.string "content"
-    t.string "tagable_type", null: false
-    t.bigint "tagable_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["tagable_type", "tagable_id"], name: "index_tags_on_tagable_type_and_tagable_id"
   end
 
   create_table "treatments", force: :cascade do |t|
