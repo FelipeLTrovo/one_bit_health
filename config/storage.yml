@@ -11,8 +11,6 @@ amazon:
   service: S3
   access_key_id: <%= ENV['ACCESS_KEY_ID'] %>
   secret_access_key: <%= ENV['SECRET_ACCESS_KEY'] %>
-  # access_key_id: AKIATKXAEPFTJ4JBV55J
-  # secret_access_key: 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
   region: us-east-1
   bucket: one-bit-health
 
