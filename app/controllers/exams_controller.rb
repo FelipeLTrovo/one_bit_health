@@ -1,10 +1,12 @@
 class ExamsController < ApplicationController
+  include Permissions
   before_action :set_exam, only: [:show, :edit, :update, :destroy]
 
   # GET /exams
   # GET /exams.json
   def index
-    @exams = Exam.all
+    user_list = Exam.where(user: current_user).pluck(:id)
+    @exams = Exam.where(id: [user_list].flatten)
   end
 
   # GET /exams/1
@@ -14,7 +16,7 @@ class ExamsController < ApplicationController
 
   # GET /exams/new
   def new
-    @exam = Exam.new
+    @exam = Exam.new(user: current_user)
   end
 
   # GET /exams/1/edit
@@ -24,7 +26,8 @@ class ExamsController < ApplicationController
   # POST /exams
   # POST /exams.json
   def create
-    @exam = Exam.new(exam_params)
+    # @exam = Exam.new(exam_params)
+    @exam = current_user.exams.new(exam_params)
 
     respond_to do |format|
       if @exam.save
@@ -64,11 +67,19 @@ class ExamsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_exam
+      user_list = Exam.where(user: current_user).pluck(:id)
+      exams = Exam.where(id: [user_list].flatten)
+      if exams.blank?
+        @exam = nil
+        redirect_to root_url, notice: "Registro não encontrado"
+      else
+        @exam = exams.find(params[:id])
+      end
       @exam = Exam.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def exam_params
-      params.require(:exam).permit(:title, :description, :exam_date, :place)
+      params.require(:exam).permit(:user_id, :title, :description, :exam_date, :place)
     end
 end

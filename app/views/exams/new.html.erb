@@ -1,5 +1,15 @@
-<h1>New Exam</h1>
+<div class="card">
+  <div class="card-header card-header-text card-header-primary">
+    <div class="card-text">
+      <h4 class="card-title">Novo Exame</h4>
+    </div>
 
-<%= render 'form', exam: @exam %>
+    <div class="card-text float-right rounded-30 p-2">
+      <%= link_to  exams_path, class: "text-white", title: "Voltar" do %>
+        <i class="material-icons">keyboard_backspace</i>
+      <% end %>
+    </div>
+  </div>
 
-<%= link_to 'Back', exams_path %>
+  <%= render 'form', exam: @exam %>
+</div>
