@@ -1,0 +1,25 @@
+<%= javascript_include_tag "form.js" %>
+
+<%= form_with(model: exam, local: true) do |form| %>
+  <%= display_flash_messages_object(@exam) %>
+  <div class="card-body">
+    <div class="form-group">
+      <%= form.text_field :title, placeholder: "Título", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.text_area :description, placeholder: "Descrição", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.datetime_field :exam_date, placeholder: "Data do exame", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.text_field :place, placeholder: "Local", class: "form-control" %>
+    </div>
+
+    <%= form.submit class: "btn btn-primary float-right mr-3 my-4" %>
+
+  </div>
+<% end %>

@@ -1,0 +1,26 @@
+<div class="card">
+  <div class="card-header card-header-icon card-header-primary">
+    <div class="card-icon">
+      <i class="material-icons">content_paste</i>
+      <span class="text-hedar">Exame</span>
+    </div>
+
+    <div class="card-text float-right rounded-30 p-2">
+      <%= link_to exams_path, class: "text-white", title: "Voltar" do %>
+        <i class="material-icons">keyboard_backspace</i>
+      <% end %>
+    </div>
+  </div>
+  <div class="card-body">
+    <h4 class="card-title"><%= @exam.title %></h4>
+    <h6 class="card-subtitle mb-2 text-muted"><%= @exam.exam_date %></h6>
+    <p class="card-text"><%= @exam.description %></p>
+  </div>
+
+  <div class="card-footer">
+    <div class="stats">
+      <i class="material-icons font-icon">access_time</i>
+      <%= @exam.exam_date.strftime("%d/%m/%Y - %H:%M") %>
+    </div>
+  </div>
+</div>
