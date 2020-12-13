@@ -5,9 +5,13 @@ class TreatmentsController < ApplicationController
   # GET /treatments
   # GET /treatments.json
   def index
-    professional_list = Treatment.where(user: @list).pluck(:id)
-    user_list = Treatment.where(user: current_user).pluck(:id)
-    @treatments = Treatment.where(id: [professional_list, user_list].flatten)
+    if current_user.admin?
+      @treatments = Treatment.all
+    else
+      professional_list = Treatment.where(user: @list).pluck(:id)
+      user_list = Treatment.where(user: current_user).pluck(:id)
+      @treatments = Treatment.where(id: [professional_list, user_list].flatten)
+    end
   end
 
   # GET /treatments/1

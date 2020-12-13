@@ -16,18 +16,25 @@ FactoryBot.build_list(:user_patient, 5).each do |user|
   puts "Salvo paciente #{user.name} - #{user.role}"
 end
 
+tag = FactoryBot.create(:tag)
+
 # Criar relacionamentos das tabelas com o admin
 User.where(role: :patient).each do |owner|
+
   puts "Criando appointment de: #{owner.name}"
-  FactoryBot.create(:appointment, user: owner)
+  appointment = FactoryBot.create(:appointment, user: owner)
+  tag.appointments << appointment
   puts "Salvo appointment de: #{owner.name}"
 
   puts "Criando exam de: #{owner.name}"
-  FactoryBot.create(:exam, user: owner)
+  exam = FactoryBot.create(:exam, user: owner)
+  tag.exams << exam
   puts "Salvo exam de: #{owner.name}"
 
   puts "Criando treatment de: #{owner.name}"
   FactoryBot.create(:treatment, user: owner)
+  treatment = FactoryBot.create(:treatment, user: owner)
+  tag.treatments << treatment
   puts "Salvo treatment de: #{owner.name}"
 
   puts "Criando shared de: #{owner.name}; para: #{User.first.name}"
