@@ -11,41 +11,39 @@
   </head>
 
   <body class="background-body">
-    <div class="container">
-      <nav class="navbar navbar-expand-lg bg-primary fixed-top container">
-        <div class="container">
-          <img src="<%= asset_path 'logo2.png' %>" alt="" height="55rem">
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <%= link_to 'Sobre', about_path(route: :about), class: "nav-link" %>
-              </li>
-              <li class="nav-item">
-                <% if params[:route] == "sign_in" %>
-                  <a class="nav-link" href="/users/sign_up?route=sign_up">Criar conta<div class="ripple-container"></div></a>
-                <% else %>
-                  <a class="nav-link" href="/users/sign_in?route=sign_in">Entrar<div class="ripple-container"></div></a>
-                <% end %>
-              </li>
-            </ul>
-          </div>
+    <nav class="navbar navbar-expand-lg bg-primary fixed-top">
+      <div class="container">
+        <img src="<%= asset_path 'logo2.png' %>" alt="logo" height="55rem">
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <%= link_to 'Sobre', about_path(route: :about), class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <% if params[:route] == "sign_in" %>
+                <a class="nav-link" href="/users/sign_up?route=sign_up">Criar conta<div class="ripple-container"></div></a>
+              <% else %>
+                <a class="nav-link" href="/users/sign_in?route=sign_in">Entrar<div class="ripple-container"></div></a>
+              <% end %>
+            </li>
+          </ul>
         </div>
-      </nav>
-
-      <%= display_flash_messages_devise %>
-      <div class="row vertical-center">
-        <% if params[:route] != "about" %>
-          <div class="col-md-7">
-            <h1 class="text-center font-weight-bold">
-              <span>Bem vindo ao</span><br>
-              <span>Health History</span>
-            </h1>
-            <h4 class="text-center">Aqui seus exames e históricos médicos</h4>
-            <h4 class="text-center">ficam a sua disposição</h4>
-          </div>
-        <% end %>
-        <%= yield %>
       </div>
+    </nav>
+
+    <%= display_flash_messages_devise %>
+    <div class="row vertical-center">
+      <% if params[:route] != "about" %>
+        <div class="col-md-7">
+          <h1 class="text-center font-weight-bold">
+            <span>Bem vindo ao</span><br>
+            <span>Health History</span>
+          </h1>
+          <h4 class="text-center">Aqui seus exames e históricos médicos</h4>
+          <h4 class="text-center">ficam a sua disposição</h4>
+        </div>
+      <% end %>
+      <%= yield %>
     </div>
   </body>
 </html>
