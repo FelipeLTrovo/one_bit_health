@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "treatments/new", type: :view do
   before(:each) do
     assign(:treatment, Treatment.new(
+      user: create(:user),
       title: "MyString",
       description: "MyText",
       date: "2020-12-10 16:57:15",
@@ -22,7 +23,7 @@ RSpec.describe "treatments/new", type: :view do
       
       assert_select "input[name=?]", "treatment[local]"
 
-      assert_select "input[name=?]", "treatment[kind]"
+      assert_select "select[name=?]", "treatment[kind]"
 
     end
   end
