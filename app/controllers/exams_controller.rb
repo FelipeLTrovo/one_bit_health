@@ -73,7 +73,7 @@ class ExamsController < ApplicationController
         @exam = nil
         redirect_to root_url, notice: "Registro não encontrado"
       else
-        @exam = exams.find(params[:id])
+        @exam = Exam.find(params[:id])
       end
       @exam = Exam.find(params[:id])
     end
