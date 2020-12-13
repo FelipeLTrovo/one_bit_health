@@ -14,11 +14,12 @@
 #
 FactoryBot.define do
   factory :treatment do
+    user_id { create(:user).id }
     sequence(:title) {|n| "Treatment - #{n}"}
     description "MyText"
     date "2020-12-10 16:57:15"
     local "MyString"
-    kind 1
+    kind :medicamento
     user
     after :create do |treatment|
       create(:tag_kind, tag: create(:tag), tagable: treatment)

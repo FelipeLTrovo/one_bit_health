@@ -14,7 +14,7 @@ RSpec.describe TreatmentsController, type: :controller do
         description: "",
         date: nil,
         local: "",
-        kind: 5
+        kind: :cirurgia
       }
     }
 
@@ -31,6 +31,7 @@ RSpec.describe TreatmentsController, type: :controller do
     describe "GET #show" do
       it "returns a success response" do
         treatment = Treatment.create! valid_attributes
+        treatment.update(user_id: User.first.id)
         get :show, params: {id: treatment.to_param}, session: valid_session
         expect(response).to be_successful
       end
@@ -46,6 +47,7 @@ RSpec.describe TreatmentsController, type: :controller do
     describe "GET #edit" do
       it "returns a success response" do
         treatment = Treatment.create! valid_attributes
+        treatment.update(user_id: User.first.id)
         get :edit, params: {id: treatment.to_param}, session: valid_session
         expect(response).to be_successful
       end
@@ -61,6 +63,7 @@ RSpec.describe TreatmentsController, type: :controller do
 
         it "updates the requested treatment" do
           treatment = Treatment.create! valid_attributes
+          treatment.update(user_id: User.first.id)
           put :update, params: {id: treatment.to_param, treatment: new_attributes}, session: valid_session
           treatment.reload
           expect(treatment.title).to eq(new_attributes[:title])
@@ -68,6 +71,7 @@ RSpec.describe TreatmentsController, type: :controller do
 
         it "redirects to the treatment" do
           treatment = Treatment.create! valid_attributes
+          treatment.update(user_id: User.first.id)
           put :update, params: {id: treatment.to_param, treatment: valid_attributes}, session: valid_session
           expect(response).to redirect_to(treatment)
         end
@@ -76,6 +80,7 @@ RSpec.describe TreatmentsController, type: :controller do
       context "with invalid params" do
         it "returns a success response (i.e. to display the 'edit' template)" do
           treatment = Treatment.create! valid_attributes
+          treatment.update(user_id: User.first.id)
           put :update, params: {id: treatment.to_param, treatment: invalid_attributes}, session: valid_session
           expect(response).to be_successful
         end
@@ -85,6 +90,7 @@ RSpec.describe TreatmentsController, type: :controller do
     describe "DELETE #destroy" do
       it "destroys the requested treatment" do
         treatment = Treatment.create! valid_attributes
+        treatment.update(user_id: User.first.id)
         expect {
           delete :destroy, params: {id: treatment.to_param}, session: valid_session
         }.to change(Treatment, :count).by(-1)
@@ -92,6 +98,7 @@ RSpec.describe TreatmentsController, type: :controller do
 
       it "redirects to the treatments list" do
         treatment = Treatment.create! valid_attributes
+        treatment.update(user_id: User.first.id)
         delete :destroy, params: {id: treatment.to_param}, session: valid_session
         expect(response).to redirect_to(treatments_url)
       end
