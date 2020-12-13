@@ -33,4 +33,5 @@ class User < ApplicationRecord
 
   has_many :treatments
   has_many :appointments
+  has_many :exams
 end

@@ -1,0 +1,49 @@
+<div class="card">
+  <div class="card-header card-header-text card-header-primary">
+    <div class="card-text">
+      <h4 class="card-title">Exames</h4>
+    </div>
+  </div>
+  <div class="card-body">
+    <% if @exams.any? %>
+      <table class="table table-hover table-respoonsive">
+        <thead>
+          <tr>
+            <th>Título</th>
+            <th>Descrição</th>
+            <th>Data do exame</th>
+            <th>Local do exame</th>
+            <th class="text-right">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @exams.each do |exam| %>
+            <tr>
+              <td class="linkable cursor-pointer" data-url="<%= exam_path(exam.id) %>"><%= exam.title %></a></td>
+              <td class="linkable cursor-pointer" data-url="<%= exam_path(exam.id) %>"><%= exam.description %></td>
+              <td class="linkable cursor-pointer" data-url="<%= exam_path(exam.id) %>"><%= date_format(exam.exam_date) %></td>
+              <td class="linkable cursor-pointer" data-url="<%= exam_path(exam.id) %>"><%= exam.place %></a></td>
+
+              <td class="td-actions text-right">
+                <%= link_to edit_exam_path(exam), class: "btn btn-success", title: "Editar" do %>
+                  <i class="material-icons">edit</i>
+                <% end %>
+                <%= link_to exam, method: :delete, data: { confirm: 'Deseja realmente excluir?' }, title: "Excluir", class: "btn btn-danger" do %>
+                  <i class="material-icons">close</i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <div class="alert alert-info mt-2">
+        Nenhum exame cadastrado.
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to new_exam_path, class: "btn btn-primary btn-just-icon btn-action-add btn-round btn-lg", title: "Novo exame" do %>
+  <i class="material-icons">add</i>
+<% end %>
