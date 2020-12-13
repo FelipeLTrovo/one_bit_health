@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :tags
   resources :treatments
   resources :appointments
+  resources :shareds
   resources :exams
   devise_for :users
   resources :users, except: [:create]
