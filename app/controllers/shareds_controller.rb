@@ -1,5 +1,9 @@
 class SharedsController < ApplicationController
 
+  def index
+    @shareds = Shared.all
+  end
+
   def create
     @shared = Shared.new(shared_params)
 
@@ -14,10 +18,11 @@ class SharedsController < ApplicationController
     end
   end
 
+
   private 
 
   def shared_params
-    params.require(:shared).permit(:user_id, :professional_id)
+    params.require(:shared).permit(:user_id, :professional_id, :duedate, :created_at)
   end
 
 
