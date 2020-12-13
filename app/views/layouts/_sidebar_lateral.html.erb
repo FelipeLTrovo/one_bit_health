@@ -31,6 +31,17 @@
           <p>Consultas</p>
         </a>
       </li>
+
+
+      <% if current_user.admin? %>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= tags_path %>">
+            <i class="material-icons">check</i>
+            <p>Criar tags</p>
+          </a>
+        </li>
+      <% end %>
+
     </ul>
   </div>
 </div>

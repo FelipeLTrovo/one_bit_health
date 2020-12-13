@@ -19,8 +19,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  before_validation {|item| item.role = :patient}
-
   ROLES = {
     admin: 0,
     patient: 1
@@ -34,4 +32,8 @@ class User < ApplicationRecord
   has_many :treatments
   has_many :appointments
   has_many :exams
+
+  def admin?
+    self.role == "admin"
+  end
 end
