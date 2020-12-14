@@ -27,8 +27,8 @@ class Ability
       end
 
       # Criar registros, atualizar e ler
-      can :create, [Appointment, Exam, Treatment, User]
-      can :update, [Appointment, Exam, Treatment, User]
+      can :create, [Appointment, Exam, Treatment, User, Shared]
+      can :update, [Appointment, Exam, Treatment, User, Shared]
 
     end
   end
