@@ -2,16 +2,14 @@
 #
 # Table name: exams
 #
-#  id           :bigint           not null, primary key
-#  user_id      :bigint           not null
-#  title        :string
-#  description  :text
-#  exam_date    :date
-#  place        :string
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  tagable_type :string           not null
-#  tagable_id   :bigint           not null
+#  id          :bigint           not null, primary key
+#  user_id     :bigint           not null
+#  title       :string
+#  description :text
+#  exam_date   :date
+#  place       :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 FactoryBot.define do
   factory :exam do

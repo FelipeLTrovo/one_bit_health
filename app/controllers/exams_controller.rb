@@ -5,9 +5,13 @@ class ExamsController < ApplicationController
   # GET /exams
   # GET /exams.json
   def index
-    professional_list = Exam.where(user: @list).pluck(:id)
-    user_list = Exam.where(user: current_user).pluck(:id)
-    @exams = Exam.where(id: [professional_list, user_list].flatten)
+    if current_user.admin?
+      @exams = Exam.all
+    else
+      professional_list = Exam.where(user: @list).pluck(:id)
+      user_list = Exam.where(user: current_user).pluck(:id)
+      @exams = Exam.where(id: [professional_list, user_list].flatten)
+    end
   end
 
   # GET /exams/1

@@ -5,9 +5,13 @@ class AppointmentsController < ApplicationController
   # GET /appointments
   # GET /appointments.json
   def index
-    professional_list = Appointment.where(user: @list).pluck(:id)
-    user_list = Appointment.where(user: current_user).pluck(:id)
-    @appointments = Appointment.where(id: [professional_list, user_list].flatten)
+    if current_user.admin?
+      @appointments = Appointment.all
+    else
+      professional_list = Appointment.where(user: @list).pluck(:id)
+      user_list = Appointment.where(user: current_user).pluck(:id)
+      @appointments = Appointment.where(id: [professional_list, user_list].flatten)
+    end
   end
 
   # GET /appointments/1

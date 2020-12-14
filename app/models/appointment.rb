@@ -10,8 +10,6 @@
 #  date         :datetime
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
-#  tagable_type :string           not null
-#  tagable_id   :bigint           not null
 #
 class Appointment < ApplicationRecord
   belongs_to :user
