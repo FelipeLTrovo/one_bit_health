@@ -22,6 +22,9 @@
               <td class="linkable cursor-pointer" data-url="<%= treatment_path(treatment.id) %>"><%= treatment.date %></td>
               <td class="linkable cursor-pointer" data-url="<%= treatment_path(treatment.id) %>"><%= treatment.local %></td>
               <td class="td-actions text-right">
+                <%= link_to "#share-modal", title: "Compartilhar", class: "btn btn-info", data: { target: "#share-modal", toggle: "modal" } do %>
+                  <i class="material-icons">share</i>
+                <% end %>
                 <%= link_to edit_treatment_path(treatment), class: "btn btn-success", title: "Editar" do %>
                   <i class="material-icons">edit</i>
                 <% end %>
@@ -44,3 +47,5 @@
 <%= link_to new_treatment_path, class: "btn btn-primary btn-just-icon btn-action-add btn-round btn-lg", title: "Novo tratamento" do %>
   <i class="material-icons">add</i>
 <% end %>
+
+<%= render 'layouts/modal', modal_title: "Tratamentos" %>
