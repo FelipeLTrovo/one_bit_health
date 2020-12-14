@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "treatments/index", type: :view do
   before(:each) do
+    http_login
     assign(:treatments, [
       Treatment.create!(
         user: create(:user, name:"Username"),
@@ -23,7 +24,6 @@ RSpec.describe "treatments/index", type: :view do
   end
 
   it "renders a list of treatments" do
-    
     render
     assert_select "tr>td", text: "Title".to_s, count: 2
     assert_select "tr>td", text: "Local".to_s, count: 2
