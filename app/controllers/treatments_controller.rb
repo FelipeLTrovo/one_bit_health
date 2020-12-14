@@ -1,6 +1,7 @@
 class TreatmentsController < ApplicationController
   include Permissions
   before_action :set_treatment, only: [:show, :edit, :update, :destroy]
+  before_action :initial_collections, only: [:show, :new, :edit, :create, :update]
 
   # GET /treatments
   # GET /treatments.json
@@ -82,8 +83,12 @@ class TreatmentsController < ApplicationController
       end
     end
 
+    def initial_collections
+      @tags = Tag.all.order(:content)
+    end
+
     # Only allow a list of trusted parameters through.
     def treatment_params
-      params.require(:treatment).permit(:title, :description, :date, :local, :kind, files: [])
+      params.require(:treatment).permit(:title, :description, :date, :local, :kind, files: [], :tag_ids=>[])
     end
 end
