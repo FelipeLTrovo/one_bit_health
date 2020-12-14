@@ -53,4 +53,7 @@ module ApplicationHelper
   def date_format(date)
     date.strftime("%d/%m/%Y - %Hh%M")
   end
+  def date_format_short(date)
+    date.strftime("%d/%m/%Y")
+  end
 end

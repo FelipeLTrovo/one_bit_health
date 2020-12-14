@@ -8,13 +8,13 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="<%= shareds_path %>">
           <i class="material-icons">share</i>
           <p>Históricos compartilhados</p>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="<%= exams_path %>">
           <i class="material-icons">content_paste</i>
           <p>Exames</p>
         </a>
@@ -31,6 +31,17 @@
           <p>Consultas</p>
         </a>
       </li>
+
+
+      <% if current_user.admin? %>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= tags_path %>">
+            <i class="material-icons">check</i>
+            <p>Criar tags</p>
+          </a>
+        </li>
+      <% end %>
+
     </ul>
   </div>
 </div>

@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "treatments/show", type: :view do
   before(:each) do
     @treatment = assign(:treatment, Treatment.create!(
+      user: create(:user),
       title: "Title",
       description: "MyText",
       date: "2020-12-10 16:57:15",

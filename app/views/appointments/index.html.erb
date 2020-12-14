@@ -18,9 +18,9 @@
         <tbody>
           <% @appointments.each do |appointment| %>
             <tr>
-              <td class="linkable cursor-pointer" data-url="<%= treatment_path(appointment.id) %>"><%= appointment.title %></a></td>
-              <td class="linkable cursor-pointer" data-url="<%= treatment_path(appointment.id) %>"><%= appointment.professional %></td>
-              <td class="linkable cursor-pointer" data-url="<%= treatment_path(appointment.id) %>"><%= date_format(appointment.date) %></td>
+              <td class="linkable cursor-pointer" data-url="<%= appointment_path(appointment.id) %>"><%= appointment.title %></a></td>
+              <td class="linkable cursor-pointer" data-url="<%= appointment_path(appointment.id) %>"><%= appointment.professional %></td>
+              <td class="linkable cursor-pointer" data-url="<%= appointment_path(appointment.id) %>"><%= date_format(appointment.date) %></td>
               <td class="td-actions text-right">
                 <%= link_to edit_appointment_path(appointment), class: "btn btn-success", title: "Editar" do %>
                   <i class="material-icons">edit</i>
@@ -35,7 +35,7 @@
       </table>
     <% else %>
       <div class="alert alert-info mt-2">
-        Nenhum tratamento cadastrado.
+        Nenhum consulta cadastrado.
       </div>
     <% end %>
   </div>

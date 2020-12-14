@@ -1,10 +1,17 @@
 class TreatmentsController < ApplicationController
+  include Permissions
   before_action :set_treatment, only: [:show, :edit, :update, :destroy]
 
   # GET /treatments
   # GET /treatments.json
   def index
-    @treatments = Treatment.all
+    if current_user.admin?
+      @treatments = Treatment.all
+    else
+      professional_list = Treatment.where(user: @list).pluck(:id)
+      user_list = Treatment.where(user: current_user).pluck(:id)
+      @treatments = Treatment.where(id: [professional_list, user_list].flatten)
+    end
   end
 
   # GET /treatments/1
@@ -64,11 +71,19 @@ class TreatmentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_treatment
-      @treatment = Treatment.find(params[:id])
+      professional_list = Treatment.where(user: @list).pluck(:id)
+      user_list = Treatment.where(user: current_user).pluck(:id)
+      treatments = Treatment.where(id: [professional_list, user_list].flatten)
+      if treatments.blank?
+        @treatment = nil
+        redirect_to root_url, notice: "Registro não encontrado"
+      else
+        @treatment = treatments.find(params[:id])
+      end
     end
 
     # Only allow a list of trusted parameters through.
     def treatment_params
-      params.require(:treatment).permit(:title, :description, :date, :local, :kind, :files)
+      params.require(:treatment).permit(:title, :description, :date, :local, :kind, files: [])
     end
 end
