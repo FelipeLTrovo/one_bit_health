@@ -18,7 +18,7 @@ class Ability
         treatment.user_id == user.id
       end
       can :manage, [Shared] do |shared|
-        [shared.user_id, share.professional_id].include? user.id
+        [shared.user_id, shared.professional_id].include? user.id
       end
       can :manage, [Appointment] do |appointment|
         appointment.user_id == user.id
