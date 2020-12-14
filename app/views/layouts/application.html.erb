@@ -20,14 +20,14 @@
         <a class="navbar-brand" href="<%= root_path %>">Health History</a>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
-            <form class="form-inline ml-auto has-white">
+            <%= form_with(url: search_path, local: true, method: :get, class: "form-inline ml-auto has-white") do |form| %>
               <div class="form-group no-border bmd-form-group">
-                <input type="text" class="form-control" placeholder="Pesquisar consultas">
+                <%= form.text_field :title, class: "form-control", placeholder: "Pesquisar", required: true %>
               </div>
               <button type="submit" class="btn btn-neutral btn-icon btn-round btn-primary">
                 <i class="material-icons">search</i>
               </button>
-            </form>
+            <% end %>
             <li class="nav-item dropdown">
               <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" title="<%= current_user.email.split("@")[0] %>" aria-haspopup="true" aria-expanded="false">
                 <i class="material-icons">person</i>

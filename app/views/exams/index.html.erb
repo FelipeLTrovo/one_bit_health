@@ -9,6 +9,9 @@
       <table class="table table-hover table-respoonsive">
         <thead>
           <tr>
+            <% if current_user.admin? %>
+              <th>Usuário</th>
+            <% end %>
             <th>Título</th>
             <th>Descrição</th>
             <th>Data do exame</th>
@@ -19,6 +22,9 @@
         <tbody>
           <% @exams.each do |exam| %>
             <tr>
+              <% if current_user.admin? %>
+                <td class="linkable cursor-pointer" data-url="<%= exam_path(exam.id) %>"><%= exam.user.email %></td>
+              <% end %>
               <td class="linkable cursor-pointer" data-url="<%= exam_path(exam.id) %>"><%= exam.title %></a></td>
               <td class="linkable cursor-pointer" data-url="<%= exam_path(exam.id) %>"><%= exam.description %></td>
               <td class="linkable cursor-pointer" data-url="<%= exam_path(exam.id) %>"><%= date_format(exam.exam_date) %></td>

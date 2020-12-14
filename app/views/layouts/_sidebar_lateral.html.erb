@@ -2,9 +2,13 @@
   <div class="sidebar-wrapper">
     <ul class="nav">
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/">
           <i class="material-icons">history_edu</i>
-          <p>Meu histórico</p>
+          <% if current_user.admin? %>
+            <p>Históricos</p>
+          <% else %>
+            <p>Meu histórico</p>
+          <% end %>
         </a>
       </li>
       <li class="nav-item">

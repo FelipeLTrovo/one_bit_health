@@ -1,0 +1,30 @@
+pt-BR:
+  activerecord:
+    models:
+      treatment: "Tratamento"
+      appointment: "Consulta"
+      exam: "Exame"
+    attributes:
+      treatment:
+        title: "Título"
+        description: "Descrição"
+        date: "Data do tratamento"
+        local: "Local do tratamento"
+        kind: "Tipo"
+      appointment:
+        title: "Título"
+        description: "Descrição"
+        date: "Data da consulta"
+        professional: "Profissional"
+      exam:
+        title: "Título"
+        description: "Descrição"
+        exam_date: "Data do exame"
+        place: "Local do exame"
+    errors:
+      messages:
+        required: "não pode ficar em branco"
+        record_invalid: "Validação falhou: %{errors}"
+        restrict_dependent_destroy:
+          has_one: "Não é possível excluir o %{model} porque exite associação com %{record}"
+          has_many: "Não é possível excluir o %{model} porque existem associações com %{record}"

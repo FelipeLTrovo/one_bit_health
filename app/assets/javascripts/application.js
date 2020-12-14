@@ -25,8 +25,8 @@
 //= require_tree .
 
 window.setTimeout(function() {
-  $(".alert-auto-close").fadeTo(500, 0).slideUp(500, function(){
-      $(this).remove();
+  $(".alert-auto-close").fadeTo(2500, 0).slideUp(500, function(){
+    $(this).remove();
   });
 }, 2000);
 
@@ -36,7 +36,6 @@ $(document).on('turbolinks:load', function() {
   })
 
   $('.linkable').click(function() {
-    var url = $(this).data('url')
-    window.location.href = url
+    window.location.href = $(this).data('url')
   })
 })

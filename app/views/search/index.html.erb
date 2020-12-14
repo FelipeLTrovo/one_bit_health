@@ -1,0 +1,138 @@
+<% if params[:title].present? %>
+  <div class="card">
+    <div class="card-header card-header-text card-header-primary">
+      <div class="card-text">
+        <h4 class="card-title">Resultados da pesquisa</h4>
+      </div>
+    </div>
+     <div class="card-body">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card card-nav-tabs" style="width: 20rem;">
+            <div class="card-header card-header-primary">
+              <i class="material-icons icon-sm">local_library</i>
+              <span class="card-header-text">Consultas</span>
+            </div>
+            <div class="card-body">
+              <% if @appointments.any? %>
+                <% @appointments.each do |appointment| %>
+                  <div class="card linkable cursor-pointer card-select" data-url="<%= appointment_path(appointment.id) %>">
+                    <div class="card-body">
+                      <h5 class="card-category card-category-social">
+                        <i class="material-icons">local_library</i>
+                        <%= appointment.title %>
+                      </h5>
+                      <h4 class="card-title">
+                        <%= appointment.description.truncate(50) %>
+                      </h4>
+
+                      <div class="card-stats">
+                        <% if current_user.admin? %>
+                          <span><%= appointment.user.email %></span>
+                        <% end %>
+                        <div class="stats ml-auto">
+                          <i class="material-icons icon-sm">calendar_today</i>
+                          <span class="text-stats">
+                            <%= appointment.date.strftime("%d/%m/%Y") %>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              <% else %>
+                <div class="alert alert-info mt-2">
+                  Nenhuma consulta encontrada.
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card card-nav-tabs" style="width: 20rem;">
+            <div class="card-header card-header-primary">
+              <i class="material-icons">content_paste</i>
+              <span class="card-header-text">Exames</span>
+            </div>
+            <div class="card-body">
+              <% if @exams.any? %>
+                <% @exams.each do |exam| %>
+                  <div class="card linkable cursor-pointer card-select" data-url="<%= exam_path(exam.id) %>">
+                    <div class="card-body">
+                      <h5 class="card-category card-category-social">
+                        <i class="material-icons">content_paste</i>
+                        <%= exam.title %>
+                      </h5>
+                      <h4 class="card-title">
+                        <%= exam.description.truncate(50) %>
+                      </h4>
+
+                      <div class="card-stats">
+                        <% if current_user.admin? %>
+                          <span><%= exam.user.email %></span>
+                        <% end %>
+                        <div class="stats ml-auto">
+                          <i class="material-icons icon-sm">calendar_today</i>
+                          <span class="text-stats">
+                            <%= exam.exam_date.strftime("%d/%m/%Y") %>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              <% else %>
+                <div class="alert alert-info mt-2">
+                  Nenhum exame encontrado.
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card card-nav-tabs" style="width: 20rem;">
+            <div class="card-header card-header-primary">
+              <i class="material-icons">medical_services</i>
+              <span class="card-header-text">Tratamentos</span>
+            </div>
+            <div class="card-body">
+              <% if @treatments.any? %>
+                <% @treatments.each do |treatment| %>
+                  <div class="card linkable cursor-pointer card-select" data-url="<%= treatment_path(treatment.id) %>">
+                    <div class="card-body">
+                      <h5 class="card-category card-category-social">
+                        <i class="material-icons">medical_services</i>
+                        <%= treatment.title %>
+                      </h5>
+                      <h4 class="card-title">
+                        <%= treatment.description.truncate(50) %>
+                      </h4>
+
+                      <div class="card-stats">
+                        <% if current_user.admin? %>
+                          <span><%= treatment.user.email %></span>
+                        <% end %>
+                        <div class="stats ml-auto">
+                          <i class="material-icons icon-sm">calendar_today</i>
+                          <span class="text-stats">
+                            <%= treatment.date.strftime("%d/%m/%Y") %>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              <% else %>
+                <div class="alert alert-info mt-2">
+                  Nenhum tratamento encontrado.
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
