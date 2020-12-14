@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-header card-header-text card-header-primary">
     <div class="card-text">
-      <h4 class="card-title">Compartilhamentos</h4>
+      <h4 class="card-title">Históricos Compartilhados</h4>
     </div>
   </div>
   <div class="card-body">
@@ -9,19 +9,17 @@
       <table class="table table-hover table-respoonsive">
         <thead>
           <tr>
-            <%# <th class="text-center" >ID</th> %>
-            <th class="text-center" >Profissional</th>
-            <th class="text-center" >Início do Compartilhamento</th>
-            <th class="text-center" >Término do Compartilhamento</th>
+            <th>Profissional</th>
+            <th>Data de ínicio</th>
+            <th>Data de termino</th>
           </tr>
         </thead>
         <tbody>
           <% @shareds.each do |shared| %>
             <tr>
-              <%# <td class="text-center" ><%= shared.id</a></td>  %>
-              <td class="text-center" ><%= shared.professional.email %></td>
-              <td class="text-center" ><%= date_format_short(shared.created_at) %></td>
-              <td class="text-center" ><%= date_format_short(shared.duedate) %></td>
+              <td><%= shared.professional.email %></td>
+              <td><%= date_format_short(shared.created_at) %></td>
+              <td><%= date_format_short(shared.duedate) %></td>
             </tr>
           <% end %>
         </tbody>
@@ -33,4 +31,3 @@
     <% end %>
   </div>
 </div>
-

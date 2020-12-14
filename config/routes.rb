@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     authenticated :user do
       get "/users/sign_out" => "devise/sessions#destroy"
+      get "/search", to: "search#index"
     end
 
     unauthenticated do
