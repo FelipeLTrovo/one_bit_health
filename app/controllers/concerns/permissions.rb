@@ -2,7 +2,7 @@ module Permissions
   extend ActiveSupport::Concern
 
   included do
-    before_action :permission, only: [:show, :index, :update, :destroy]
+    before_action :permission, only: [:show, :index, :edit, :update, :destroy]
   end
 
   def permission
@@ -11,5 +11,5 @@ module Permissions
     list = shared.select{ |s| [s.professional_id, s.user.id].include?(current_user.id) }
     @list = list.map{ |item| [item.professional_id, item.user_id] }.flatten.uniq
   end
-  
+
 end

@@ -12,8 +12,8 @@
 #
 FactoryBot.define do
   factory :shared do
-    user
+    user_id { create(:user).id }
     duedate { 7.days.from_now }
-    professional { association :user }
+    professional_id { create(:user).id }
   end
 end
