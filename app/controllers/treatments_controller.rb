@@ -84,6 +84,6 @@ class TreatmentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def treatment_params
-      params.require(:treatment).permit(:title, :description, :date, :local, :kind, :files)
+      params.require(:treatment).permit(:title, :description, :date, :local, :kind, files: [])
     end
 end
