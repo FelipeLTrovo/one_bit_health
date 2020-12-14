@@ -5,8 +5,9 @@ class ExamsController < ApplicationController
   # GET /exams
   # GET /exams.json
   def index
+    professional_list = Exam.where(user: @list).pluck(:id)
     user_list = Exam.where(user: current_user).pluck(:id)
-    @exams = Exam.where(id: [user_list].flatten)
+    @exams = Exam.where(id: [professional_list, user_list].flatten)
   end
 
   # GET /exams/1
@@ -67,19 +68,19 @@ class ExamsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_exam
+      professional_list = Exam.where(user: @list).pluck(:id)
       user_list = Exam.where(user: current_user).pluck(:id)
-      exams = Exam.where(id: [user_list].flatten)
+      exams = Exam.where(id: [professional_list, user_list].flatten)
       if exams.blank?
         @exam = nil
         redirect_to root_url, notice: "Registro não encontrado"
       else
         @exam = Exam.find(params[:id])
       end
-      @exam = Exam.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def exam_params
-      params.require(:exam).permit(:user_id, :title, :description, :exam_date, :place)
+      params.require(:exam).permit(:user_id, :title, :description, :exam_date, :place, files: [])
     end
 end

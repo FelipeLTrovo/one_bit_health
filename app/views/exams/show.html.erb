@@ -15,12 +15,24 @@
     <h4 class="card-title"><%= @exam.title %></h4>
     <h6 class="card-subtitle mb-2 text-muted"><%= @exam.exam_date %></h6>
     <p class="card-text"><%= @exam.description %></p>
+    <p class="card-text">Anexos: </p>
+    <% if @exam.files.any? %>
+      <% @exam.files.each do |file| %>
+      <%= link_to file.filename, url_for(file), class: "card-link" %>
+      <% end %>
+    <% else %>
+        <p class="card-text italic">Não há arquivos para este exame</p>
+    <% end %>
   </div>
 
   <div class="card-footer">
     <div class="stats">
       <i class="material-icons font-icon">access_time</i>
       <%= @exam.exam_date.strftime("%d/%m/%Y - %H:%M") %>
+    </div>
+    <div class="stats">
+      <i class="material-icons font-icon">location_on</i>
+      <%= @exam.place %>
     </div>
   </div>
 </div>
