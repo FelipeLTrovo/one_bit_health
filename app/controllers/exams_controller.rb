@@ -31,9 +31,9 @@ class ExamsController < ApplicationController
   # POST /exams
   # POST /exams.json
   def create
-    # @exam = Exam.new(exam_params)
-    @exam = current_user.exams.new(exam_params)
-
+    @exam = Exam.new(exam_params)
+    @exam.user = current_user
+    
     respond_to do |format|
       if @exam.save
         format.html { redirect_to @exam, notice: 'Exam was successfully created.' }
