@@ -8,6 +8,9 @@ class Ability
       can :manage, :all
     elsif user.patient?
       cannot :manage, Tag
+      can :manage, [User] do |user|
+        user.id == user.id
+      end      
       can :manage, [Exam] do |exam|
         exam.user_id == user.id
       end
