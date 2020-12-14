@@ -26,8 +26,6 @@ class User < ApplicationRecord
 
   enum role: ROLES
 
-  before_validation { |item| item.role = :patient }
-
   validates :role, presence: true
   validates :email, uniqueness: true
 
