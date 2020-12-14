@@ -1,5 +1,15 @@
-<h1>New Tag</h1>
+<div class="card">
+  <div class="card-header card-header-text card-header-primary">
+    <div class="card-text">
+      <h4 class="card-title">Nova tag</h4>
+    </div>
 
-<%= render 'form', tag: @tag %>
+    <div class="card-text float-right rounded-30 p-2">
+      <%= link_to  tags_path, class: "text-white", title: "Voltar" do %>
+        <i class="material-icons">keyboard_backspace</i>
+      <% end %>
+    </div>
+  </div>
 
-<%= link_to 'Back', tags_path %>
+  <%= render 'form', tag: @tag %>
+</div>

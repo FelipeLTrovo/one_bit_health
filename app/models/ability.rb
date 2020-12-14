@@ -7,7 +7,19 @@ class Ability
     if user.admin?
       can :manage, :all
     elsif user.patient?
-      can :manage, :all
+      cannot :manage, Tag
+      can :manage, [Exam] do |exam|
+        exam.user_id == user.id
+      end
+      can :manage, [Treatment] do |treatment|
+        treatment.user_id == user.id
+      end
+      can :manage, [Shared] do |shared|
+        [shared.user_id, share.professional_id].include? user.id
+      end
+      can :manage, [Appointment] do |appointment|
+        appointment.user_id == user.id
+      end
     end
   end
 end

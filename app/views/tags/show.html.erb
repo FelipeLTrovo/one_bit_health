@@ -1,9 +1,17 @@
-<p id="notice"><%= notice %></p>
+<div class="card">
+  <div class="card-header card-header-icon card-header-primary">
+    <div class="card-icon">
+      <i class="material-icons">content_paste</i>
+      <span class="text-hedar">Exame</span>
+    </div>
 
-<p>
-  <strong>Content:</strong>
-  <%= @tag.content %>
-</p>
-
-<%= link_to 'Edit', edit_tag_path(@tag) %> |
-<%= link_to 'Back', tags_path %>
+    <div class="card-text float-right rounded-30 p-2">
+      <%= link_to tags_path, class: "text-white", title: "Voltar" do %>
+        <i class="material-icons">keyboard_backspace</i>
+      <% end %>
+    </div>
+  </div>
+  <div class="card-body">
+    <h4 class="card-title"><%= @tag.content %></h4>
+  </div>
+</div>
