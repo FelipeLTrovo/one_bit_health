@@ -1,6 +1,6 @@
 <%= javascript_include_tag "form.js" %>
 
-<%= form_with(model: exam, local: true) do |form| %>
+<%= simple_form_for(@exam) do |form| %>
   <%= display_flash_messages_object(@exam) %>
   <div class="card-body">
     <div class="form-group">
@@ -17,6 +17,16 @@
 
     <div class="form-group">
       <%= form.text_field :place, placeholder: "Local do exame", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.association :tags,
+          label: 'Tags', as: :select,
+          collection: @tags,
+          label_method: :content,
+          :multiple => true,
+          class: 'chosen-select'
+        %>
     </div>
 
     <div class="form-group form-file-upload form-file-multiple">

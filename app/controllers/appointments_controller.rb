@@ -1,6 +1,7 @@
 class AppointmentsController < ApplicationController
   include Permissions
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
+  before_action :initial_collections, only: [:show, :new, :edit, :create, :update]
 
   # GET /appointments
   # GET /appointments.json
@@ -81,8 +82,12 @@ class AppointmentsController < ApplicationController
       end
     end
 
+    def initial_collections
+      @tags = Tag.all.order(:content)
+    end
+
     # Only allow a list of trusted parameters through.
     def appointment_params
-      params.require(:appointment).permit(:user_id, :title, :description, :professional, :date, files: [])
+      params.require(:appointment).permit(:user_id, :title, :description, :professional, :date, files: [], :tag_ids=>[])
     end
 end
