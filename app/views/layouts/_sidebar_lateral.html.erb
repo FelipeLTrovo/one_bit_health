@@ -35,8 +35,6 @@
           <p>Consultas</p>
         </a>
       </li>
-
-
       <% if current_user.admin? %>
         <li class="nav-item">
           <a class="nav-link" href="<%= tags_path %>">
@@ -44,8 +42,13 @@
             <p>Criar tags</p>
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= users_path %>">
+            <i class="material-icons">person</i>
+            <p>Usuários</p>
+          </a>
+        </li>
       <% end %>
-
     </ul>
   </div>
 </div>

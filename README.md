@@ -12,10 +12,10 @@ Criadores:
 - César Ryan.
 - Claudi Martins de Freitas.
 - Emerson Duarte.
-- Igor Batista.
 - Fabio Muller.
 - Fábio Vilhena.
 - Felipe Leal Trovo.
+- Igor Batista.
 
 # Principais tecnologias/Gemas
 [Framework - Rails 6.0](https://rubygems.org/gems/rails/versions/4.2.6?locale=pt-BR)  
