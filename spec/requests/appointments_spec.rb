@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe "Appointments", type: :request do
-  describe "GET /appointments" do
-    it "works! (now write some real specs)" do
-      get appointments_path
-      expect(response).to have_http_status(200)
+  describe "GET /shareds" do
+    it " without login need to be redirect to root" do
+      get users_path
+      expect(response).to have_http_status(302)
+      expect(response.location).to eq("http://www.example.com/users/sign_in")
     end
   end
 end

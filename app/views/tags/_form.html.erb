@@ -1,13 +1,11 @@
+<%= javascript_include_tag "form.js" %>
 
-<%= simple_form_for(@tag) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-  <div class="form-inputs">
-    <%= f.input :content %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
+<%= form_with(model: tag, local: true) do |form| %>
+  <%= display_flash_messages_object(@tag) %>
+  <div class="card-body">
+    <div class="form-group">
+      <%= form.text_field :content, placeholder: "Título", class: "form-control" %>
+    </div>
+    <%= form.submit class: "btn btn-primary float-right mr-3 my-4" %>
   </div>
 <% end %>
