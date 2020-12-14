@@ -17,6 +17,7 @@ class Exam < ApplicationRecord
   belongs_to :user
   has_many :tag_kinds, as: :tagable, dependent: :destroy
   has_many :tags, through: :tag_kinds
+  has_many_attached :files
 
   validates :title, :description, :exam_date, :place, presence: true
 
