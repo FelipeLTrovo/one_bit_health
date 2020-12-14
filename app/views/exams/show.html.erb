@@ -14,6 +14,10 @@
   <div class="card-body">
     <h4 class="card-title"><%= @exam.title %></h4>
     <p class="card-text"><%= @exam.description %></p>
+    <h4 class="card-title">Tags:</h4>
+    <% @exam.tags.each do |tag| %>
+      <p class="card-text"><%= tag.content %></p>
+    <% end %>
     <p class="card-text">Anexos: </p>
     <% if @exam.files.any? %>
       <% @exam.files.each do |file| %>

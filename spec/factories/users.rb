@@ -17,14 +17,14 @@ FactoryBot.define do
   factory :user, class: User do
     sequence(:name) {|n| "User - #{n}"}
     sequence(:email) {|n| "teste_#{n}@teste.com"}
-    sequence(:password) {|n| "teste#{"%08d" % n}"}
+    password '123456'
     role :admin
   end
 
   factory :user_patient, class: User do
     sequence(:name) {|n| "User - #{n}"}
     sequence(:email) {|n| "teste_#{n}@teste.com"}
-    sequence(:password) {|n| "teste#{"%08d" % n}"}
+    password '123456'
     role :patient
   end
 end

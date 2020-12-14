@@ -1,6 +1,7 @@
 class ExamsController < ApplicationController
   include Permissions
   before_action :set_exam, only: [:show, :edit, :update, :destroy]
+  before_action :initial_collections, only: [:show, :new, :edit, :create, :update]
 
   # GET /exams
   # GET /exams.json
@@ -33,7 +34,7 @@ class ExamsController < ApplicationController
   def create
     @exam = Exam.new(exam_params)
     @exam.user = current_user
-    
+
     respond_to do |format|
       if @exam.save
         format.html { redirect_to @exam, notice: 'Exam was successfully created.' }
@@ -83,8 +84,12 @@ class ExamsController < ApplicationController
       end
     end
 
+    def initial_collections
+      @tags = Tag.all.order(:content)
+    end
+
     # Only allow a list of trusted parameters through.
     def exam_params
-      params.require(:exam).permit(:user_id, :title, :description, :exam_date, :place, files: [])
+      params.require(:exam).permit(:user_id, :title, :description, :exam_date, :place, files: [], :tag_ids=>[])
     end
 end

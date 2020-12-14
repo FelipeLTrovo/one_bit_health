@@ -9,13 +9,16 @@ O aplicativo criado no hackaton do Bootcamp do Onebitcode que tem a função de:
 - Centralizar e categorizar documentos relacionados a saúde do usuário.
 
 Criadores:
-- César Ryan.
-- Claudi Martins de Freitas.
-- Emerson Duarte.
-- Fabio Muller.
-- Fábio Vilhena.
-- Felipe Leal Trovo.
-- Igor Batista.
+- [César Ryan - linkedin](https://www.linkedin.com/in/cryanfigueiredo/)  
+- [Claudi Martins de Freitas - linkedin](https://www.linkedin.com/in/claudimartinsdefreitas/)  
+- [Emerson Duarte - linkedin](https://www.linkedin.com/in/emerson-duarte/)  
+- [Fabio Muller - linkedin](https://www.linkedin.com/in/fabiomullerdev/)  
+- [Fábio Vilhena - linkedin](https://www.linkedin.com/in/f%C3%A1bio-vilhena-468bab1b/)  
+- [Felipe Leal Trovo - linkedin](https://www.linkedin.com/in/felipe-leal-trovo-843328141/)  
+- [Igor Batista - linkedin](https://www.linkedin.com/in/felipe-leal-trovo-843328141/)  
+
+
+
 
 # Principais tecnologias/Gemas
 [Framework - Rails 6.0](https://rubygems.org/gems/rails/versions/4.2.6?locale=pt-BR)  
