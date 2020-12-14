@@ -33,7 +33,7 @@
                 <i class="material-icons">person</i>
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                <a class="dropdown-item" href="#">Perfil</a>
+                <a class="dropdown-item" href="/users/<%= current_user.id %>">Perfil</a>
                 <div class="dropdown-divider"></div>
                 <%= link_to('Sair', destroy_user_session_path, method: :delete, class: "dropdown-item") %>
               </div>
