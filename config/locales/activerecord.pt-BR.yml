@@ -4,6 +4,8 @@ pt-BR:
       treatment: "Tratamento"
       appointment: "Consulta"
       exam: "Exame"
+      user: "Usuário"
+      shared: "Compartilhamento"
     attributes:
       treatment:
         title: "Título"
@@ -21,6 +23,11 @@ pt-BR:
         description: "Descrição"
         exam_date: "Data do exame"
         place: "Local do exame"
+      user:
+        name: "Nome"
+        role: "Papel"
+      shared:
+        duedate: "Data de Vencimento"
     errors:
       messages:
         required: "não pode ficar em branco"
