@@ -20,5 +20,6 @@ module Myapp
       Devise::RegistrationsController.layout "devise"
     end
     config.autoload_paths += %W["#{config.root}/app/validators/"]
+    config.active_storage.replace_on_assign_to_many = false
   end
 end
