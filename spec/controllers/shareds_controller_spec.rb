@@ -4,15 +4,10 @@ RSpec.describe SharedsController, type: :controller do
   before(:each) do
     http_login
   end
-
   let(:valid_attributes) { FactoryBot.attributes_for(:shared) }
 
   let(:invalid_attributes) {
-    {
-      user_id: nil,
-      professional_id: nil,
-      duedate: nil,
-    }
+    skip("Add a hash of attributes invalid for your model")
   }
 
   let(:valid_session) { {} }

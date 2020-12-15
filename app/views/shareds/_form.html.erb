@@ -1,11 +1,13 @@
 <%= javascript_include_tag "form.js" %>
 
-<%= form_with(model: @shared, local: true) do |form| %>
+<%= simple_form_for(@shared) do |form| %>
   <%= display_flash_messages_object(@shared) %>
-  <div class="card-body">
-    <div class="form-group">
-      <%= form.text_field :professional_id, placeholder: "Email", class: "form-control" %>
-    </div>
-    <%= form.submit class: "btn btn-primary float-right mr-3 my-4" %>
+  <div class="card-body ">
+    <div class="form-group ">
+    <label for="">Compartilhar por 7 dias com</label>
+      <%= form.select :professional_id, User.all.pluck(:email, :id), { prompt: "Selecione o usuário" }, { class: 'form-control' } %>
+  </div>
+
+    <%= form.submit "Compartilhar", class: "btn btn-primary float-right mr-3 my-4"%>
   </div>
 <% end %>

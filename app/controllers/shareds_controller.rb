@@ -10,7 +10,7 @@ class SharedsController < ApplicationController
 
   def create
     @shared = Shared.new(shared_params)
-    professional = User.where(email: params[:shared][:professional_id])
+    professional = User.find(params[:shared][:professional_id])
     if !professional.present?
       flash[:danger] = "Não existem profissionais cadastrados."
       redirect_to (new_shared_path)
@@ -18,12 +18,13 @@ class SharedsController < ApplicationController
     end
     @shared.professional_id = professional.id
     @shared.user_id = current_user.id
+    @shared.duedate = Time.zone.now + 7.days
 
 
 
     respond_to do |format|
       if @shared.save
-        format.html { redirect_to @shared, notice: 'Shared was successfully created.' }
+        format.html { redirect_to shareds_path, notice: 'Shared was successfully created.' }
         format.json { render :show, status: :created, location: @shared }
       else
         format.html { render :new }
