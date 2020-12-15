@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
+  
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :can_user, only: [:edit]
 
   # GET /users
   # GET /users.json
@@ -70,5 +72,13 @@ class UsersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(:role, :name, :email)
+    end
+
+    def can_user
+      @user = User.find(params[:id])
+      if @user != current_user
+        flash[:danger] = "You not permission to edit user."
+        redirect_to root_path
+      end
     end
 end
