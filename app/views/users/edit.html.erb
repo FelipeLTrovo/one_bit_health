@@ -1,6 +1,15 @@
-<h1>Editing User</h1>
+<div class="card">
+  <div class="card-header card-header-text card-header-primary">
+    <div class="card-text">
+      <h4 class="card-title">Editar Usuário</h4>
+    </div>
 
-<%= render 'form', user: @user %>
+    <div class="card-text float-right rounded-30 p-2">
+      <%= link_to root_path, class: "text-white", title: "Voltar" do %>
+        <i class="material-icons">keyboard_backspace</i>
+      <% end %>
+    </div>
+  </div>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+  <%= render 'form', user: @user %>
+</div>
