@@ -16,4 +16,5 @@ class Shared < ApplicationRecord
   validates :user_id, presence: true, uniqueness: { scope: [:professional_id, :duedate] }
   validates :professional_id, presence: true
   validates :duedate, presence: true, future_date: true
+  before_validation { |item| item.duedate = Date.current + 7.days }
 end

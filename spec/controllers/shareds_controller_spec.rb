@@ -4,7 +4,6 @@ RSpec.describe SharedsController, type: :controller do
   before(:each) do
     http_login
   end
-
   let(:valid_attributes) { FactoryBot.attributes_for(:shared) }
 
   let(:invalid_attributes) {
