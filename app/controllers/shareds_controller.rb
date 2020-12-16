@@ -6,6 +6,7 @@ class SharedsController < ApplicationController
 
   def new
     @shared = Shared.new
+    @available_user = User.joins("inner join shareds on shareds.professional_id = users.id and shareds.user_id = #{current_user.id} and shareds.duedate > date('#{Date.current.to_date}')").joins("right join users p on p.id = shareds.professional_id").where( shareds: { id: nil }).where.not(p: {id: current_user.id}).select("p.*")
   end
 
   def create
