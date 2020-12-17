@@ -9,7 +9,7 @@ RSpec.describe AppointmentsController, type: :controller do
     let(:valid_attributes) { FactoryBot.attributes_for(:appointment, user: User.first) }
 
     let(:invalid_attributes) {
-      skip("Add a hash of attributes invalid for your model")
+      Appointment.new.attributes
     }
 
     let(:valid_session) { {} }
@@ -71,14 +71,16 @@ RSpec.describe AppointmentsController, type: :controller do
     describe "PUT #update" do
       context "with valid params" do
         let(:new_attributes) {
-          skip("Add a hash of attributes valid for your model")
+          {
+            description: "Teste - 1"
+          }
         }
 
         it "updates the requested appointment" do
           appointment = Appointment.create! valid_attributes
           put :update, params: {id: appointment.to_param, appointment: new_attributes}, session: valid_session
           appointment.reload
-          skip("Add assertions for updated state")
+          expect(appointment.description).to eq(new_attributes[:description])
         end
 
         it "redirects to the appointment" do
