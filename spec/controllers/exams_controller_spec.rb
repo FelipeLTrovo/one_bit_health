@@ -9,7 +9,7 @@ RSpec.describe ExamsController, type: :controller do
     let(:valid_attributes) { FactoryBot.attributes_for(:exam, user: User.first) }
 
     let(:invalid_attributes) {
-      skip("Add a hash of attributes invalid for your model")
+      Exam.new.attributes
     }
 
     let(:valid_session) { {} }
@@ -71,14 +71,16 @@ RSpec.describe ExamsController, type: :controller do
     describe "PUT #update" do
       context "with valid params" do
         let(:new_attributes) {
-          skip("Add a hash of attributes valid for your model")
+          {
+            description: "Teste - 1"
+          }
         }
 
         it "updates the requested exam" do
           exam = Exam.create! valid_attributes
           put :update, params: {id: exam.to_param, exam: new_attributes}, session: valid_session
           exam.reload
-          skip("Add assertions for updated state")
+          expect(exam.description).to eq(new_attributes[:description])
         end
 
         it "redirects to the exam" do
