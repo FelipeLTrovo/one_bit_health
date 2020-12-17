@@ -13,28 +13,30 @@
 require 'rails_helper'
 
 RSpec.describe Shared, type: :model do
-  before(:each) do
-    @shared = create(:shared)
+  context "validations with shouldamatchers " do
+    it { is_expected.to belong_to :user }
+    it { is_expected.to belong_to :professional }
+    it { is_expected.to validate_presence_of :user_id }
+    it { is_expected.to validate_presence_of :professional_id }
   end
 
-  subject { @shared }
+  context "special validations " do
+    let!(:shared) { create(:shared)}
 
-  it { is_expected.to belong_to :user }
-  it { is_expected.to belong_to :professional }
-  it { is_expected.to validate_presence_of :user_id }
-  it { is_expected.to validate_presence_of :duedate }
-  it { is_expected.to validate_presence_of :professional_id }
-  it { is_expected.to validate_uniqueness_of(:user_id).scoped_to(:professional_id, :duedate) }
+    it "can't have past due_date" do
+      shared.update(duedate: 1.day.ago)
+      expect(shared.errors.keys).to include :duedate
+    end
 
-  it "can't have past due_date" do
-    subject.duedate = 1.day.ago
-    subject.valid?
-    expect(subject.errors.keys).to include :duedate
-  end
+    it "is valid with future date" do
+      shared.update(duedate: Date.current + 5.days)
+      expect(shared.errors.keys).to_not include :duedate
+    end
 
-  it "is valid with future date" do
-    subject.duedate = Date.current + 7.days
-    subject.valid?
-    expect(subject.errors.keys).to_not include :duedate
+    it "can´t create duplicated registries" do
+      shared_1 = Shared.new(user: shared.user, professional: shared.professional, duedate: shared.duedate)
+      shared_1.valid?
+      expect(shared_1.errors.messages[:duedate]).to eq(["Não pode haver compartilhamentos repetidos"])
+    end
   end
 end

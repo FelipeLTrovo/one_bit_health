@@ -10,8 +10,8 @@ class SharedsController < ApplicationController
   end
 
   def create
-    @shared = current_user.shareds.new(shared_params)
-    
+    @shared = Shared.new(shared_params)
+
     respond_to do |format|
       if @shared.save
         format.html { redirect_to shareds_path, notice: 'Shared was successfully created.' }
@@ -24,11 +24,9 @@ class SharedsController < ApplicationController
   end
 
 
-  private 
+  private
 
   def shared_params
-    params.require(:shared).permit(:user_id, :professional_id, :duedate, :created_at)
+    params.require(:shared).permit(:user_id, :professional_id)
   end
-
-
 end
