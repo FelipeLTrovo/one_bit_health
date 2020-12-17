@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :can_user, only: [:edit]
 
@@ -76,6 +76,9 @@ class UsersController < ApplicationController
 
     def can_user
       @user = User.find(params[:id])
+      if current_user.admin?
+        return
+      end
       if @user != current_user
         flash[:danger] = "You not permission to edit user."
         redirect_to root_path

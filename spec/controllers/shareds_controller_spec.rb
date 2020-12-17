@@ -4,6 +4,7 @@ RSpec.describe SharedsController, type: :controller do
   before(:each) do
     http_login
   end
+
   let(:valid_attributes) { FactoryBot.attributes_for(:shared) }
 
   let(:invalid_attributes) {
@@ -18,7 +19,6 @@ RSpec.describe SharedsController, type: :controller do
 
   describe "GET #index" do
     it "returns a success response" do
-      Shared.create! valid_attributes
       get :index, params: {}, session: valid_session
       expect(response).to be_successful
     end

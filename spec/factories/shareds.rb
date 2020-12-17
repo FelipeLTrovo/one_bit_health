@@ -11,9 +11,8 @@
 #  updated_at      :datetime         not null
 #
 FactoryBot.define do
-  factory :shared do
+  factory :shared, class: Shared do
     user_id { create(:user).id }
-    duedate { 7.days.from_now }
     professional_id { create(:user).id }
   end
 end

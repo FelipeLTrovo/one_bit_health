@@ -23,7 +23,7 @@ FactoryBot.define do
 
   factory :user_patient, class: User do
     sequence(:name) {|n| "User - #{n}"}
-    sequence(:email) {|n| "teste_#{n}@teste.com"}
+    sequence(:email) {|n| "teste_patient_#{n}@teste.com"}
     password '123456'
     role :patient
   end
