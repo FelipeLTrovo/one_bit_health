@@ -5,7 +5,7 @@
   <div class="card-body ">
     <div class="form-group ">
     <label for="">Compartilhar por 7 dias com</label>
-      <%= form.select :professional_id, @available_user.collect{|u| [u.email, u.id]}, { include_blank: "Selecione o usuário" }, { class:'form-control', required: true } %>
+      <%= form.select :professional_id, @available_user.collect{|u| [u.email, u.id]}, { include_blank: "Selecione o usuário" }, { title: "Selecione um usuário" , class: "form-control selectpicker", data: { style: "btn btn-link" } } %>
   </div>
 
     <%= form.submit "Compartilhar", class: "btn btn-primary float-right mr-3 my-4"%>

@@ -95,10 +95,10 @@
   font-size: 17px !important;
 }
 
-.card-stats > .stats > .text-stats {
+.card-footer > .text-stats {
   font-size: 12px !important;
   position: relative;
-  top: -1px;
+  top: 3px;
   left: 4px;
 }
 
@@ -122,4 +122,8 @@
 
 .padding-top-6 {
   padding-top: 6rem;
+}
+
+.card-footer > .material-icons {
+  font-size: 17px !important;
 }

@@ -10,7 +10,7 @@
   <div class="card-body">
     <div class="row">
       <div class="col-md-4">
-        <div class="card card-nav-tabs" style="width: 20rem;">
+        <div class="card card-nav-tabs">
           <div class="card-header card-header-primary">
             <i class="material-icons icon-sm">local_library</i>
             <span class="card-header-text">Consultas</span>
@@ -32,13 +32,13 @@
                       <% if current_user.admin? %>
                         <span><%= appointment.user.email %></span>
                       <% end %>
-                      <div class="stats ml-auto">
-                        <i class="material-icons icon-sm">calendar_today</i>
-                        <span class="text-stats">
-                          <%= appointment.date.strftime("%d/%m/%Y") %>
-                        </span>
-                      </div>
                     </div>
+                  </div>
+                  <div class="card-footer justify-content-start">
+                    <i class="material-icons icon-sm">calendar_today</i>
+                    <span class="text-stats">
+                      <%= appointment.date.strftime("%d/%m/%Y") %>
+                    </span>
                   </div>
                 </div>
               <% end %>
@@ -52,7 +52,7 @@
       </div>
 
       <div class="col-md-4">
-        <div class="card card-nav-tabs" style="width: 20rem;">
+        <div class="card card-nav-tabs">
           <div class="card-header card-header-primary">
             <i class="material-icons">content_paste</i>
             <span class="card-header-text">Exames</span>
@@ -74,13 +74,13 @@
                       <% if current_user.admin? %>
                         <span><%= exam.user.email %></span>
                       <% end %>
-                      <div class="stats ml-auto">
-                        <i class="material-icons icon-sm">calendar_today</i>
-                        <span class="text-stats">
-                          <%= exam.exam_date.strftime("%d/%m/%Y") %>
-                        </span>
-                      </div>
                     </div>
+                  </div>
+                  <div class="card-footer justify-content-start">
+                    <i class="material-icons icon-sm">calendar_today</i>
+                    <span class="text-stats">
+                      <%= exam.exam_date.strftime("%d/%m/%Y") %>
+                    </span>
                   </div>
                 </div>
               <% end %>
@@ -94,7 +94,7 @@
       </div>
 
       <div class="col-md-4">
-        <div class="card card-nav-tabs" style="width: 20rem;">
+        <div class="card card-nav-tabs">
           <div class="card-header card-header-primary">
             <i class="material-icons">medical_services</i>
             <span class="card-header-text">Tratamentos</span>
@@ -116,13 +116,13 @@
                       <% if current_user.admin? %>
                         <span><%= treatment.user.email %></span>
                       <% end %>
-                      <div class="stats ml-auto">
-                        <i class="material-icons icon-sm">calendar_today</i>
-                        <span class="text-stats">
-                          <%= treatment.date.strftime("%d/%m/%Y") %>
-                        </span>
-                      </div>
                     </div>
+                  </div>
+                  <div class="card-footer justify-content-start">
+                    <i class="material-icons icon-sm">calendar_today</i>
+                    <span class="text-stats">
+                      <%= treatment.date.strftime("%d/%m/%Y") %>
+                    </span>
                   </div>
                 </div>
               <% end %>

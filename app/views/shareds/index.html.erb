@@ -17,7 +17,7 @@
         <tbody>
           <% @shareds.each do |shared| %>
             <tr>
-              <td><%= shared.professional.email %></td>
+              <td><%= shared.professional.name.presence || shared.professional.email.presence %></td>
               <td><%= date_format_short(shared.created_at) %></td>
               <td><%= date_format_short(shared.duedate) %></td>
             </tr>

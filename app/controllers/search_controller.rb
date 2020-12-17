@@ -4,9 +4,15 @@ class SearchController < ApplicationController
 
   def index
     if params[:title].present?
-      @treatments = current_user.treatments.where("treatments.title LIKE ?", "%#{params[:title]}%")
-      @exams = current_user.exams.where("exams.title LIKE ?", "%#{params[:title]}%")
-      @appointments = current_user.appointments.where("appointments.title LIKE ?", "%#{params[:title]}%")
+      if current_user.admin?
+        @treatments = Treatment.where("treatments.title LIKE ?", "%#{params[:title]}%")
+        @exams = Exam.where("exams.title LIKE ?", "%#{params[:title]}%")
+        @appointments = Appointment.where("appointments.title LIKE ?", "%#{params[:title]}%")
+      else
+        @treatments = current_user.treatments.where("treatments.title LIKE ?", "%#{params[:title]}%")
+        @exams = current_user.exams.where("exams.title LIKE ?", "%#{params[:title]}%")
+        @appointments = current_user.appointments.where("appointments.title LIKE ?", "%#{params[:title]}%")
+      end
     end
   end
 end

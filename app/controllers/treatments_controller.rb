@@ -79,7 +79,7 @@ class TreatmentsController < ApplicationController
         @treatment = nil
         redirect_to root_url, notice: "Registro não encontrado"
       else
-        @treatment = treatments.find(params[:id])
+        @treatment = Treatment.find(params[:id])
       end
     end
 

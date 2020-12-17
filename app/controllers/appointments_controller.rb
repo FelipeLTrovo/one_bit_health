@@ -78,7 +78,7 @@ class AppointmentsController < ApplicationController
         @appointment = nil
         redirect_to root_url, notice: "Registro não encontrado"
       else
-        @appointment = appointments.find(params[:id])
+        @appointment = Appointment.find(params[:id])
       end
     end
 
