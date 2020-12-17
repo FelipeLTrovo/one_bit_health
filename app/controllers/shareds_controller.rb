@@ -1,5 +1,4 @@
 class SharedsController < ApplicationController
-
   def index
     @shareds = current_user.shareds
   end
@@ -23,10 +22,9 @@ class SharedsController < ApplicationController
     end
   end
 
-
   private
 
   def shared_params
-    params.require(:shared).permit(:user_id, :professional_id)
+    params.require(:shared).permit(:professional_id).merge!(user_id: current_user.id)
   end
 end

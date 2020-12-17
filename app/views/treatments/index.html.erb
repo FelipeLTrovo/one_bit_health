@@ -30,7 +30,9 @@
               <td class="linkable cursor-pointer" data-url="<%= treatment_path(treatment.id) %>"><%= date_format treatment.date %></td>
               <td class="linkable cursor-pointer" data-url="<%= treatment_path(treatment.id) %>"><%= treatment.local %></td>
               <td class="linkable cursor-pointer" data-url="<%= treatment_path(treatment.id) %>"><%= treatment.kind.capitalize %></td>
-              <td class="linkable cursor-pointer" data-url="<%= treatment_path(treatment.id) %>"><%= treatment.tags.map do |tag| tag.content end %></td>
+              <td class="linkable cursor-pointer" data-url="<%= treatment_path(treatment.id) %>">
+                <%= treatment.tags.pluck(:content).to_sentence %>
+              </td>
               <td class="td-actions text-right">
                 <%= link_to edit_treatment_path(treatment), class: "btn btn-success", title: "Editar" do %>
                   <i class="material-icons">edit</i>

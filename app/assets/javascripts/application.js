@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
 //= require jquery
 //= require jquery_ujs
 //= require popper
@@ -30,7 +29,7 @@ window.setTimeout(function() {
   });
 }, 2000);
 
-$(document).on('turbolinks:load', function() {
+$(document).on('ready', function() {
   $('.toggle-menu').click(function() {
     $('#sidebar-lateral').toggleClass('sidebar-lateral-right')
   })
