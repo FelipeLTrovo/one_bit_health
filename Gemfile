@@ -28,6 +28,9 @@ gem 'popper_js', '~> 1.12.9'
 gem 'uglifier', '>= 1.3.0'
 gem 'simple_form', '5.0.3'
 
+# Factories
+gem 'factory_bot_rails', '~> 4.8.2'
+
 # For bash identation
 gem 'awesome_print', '~> 1.6', '>= 1.6.1'
 
@@ -39,8 +42,6 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-  gem 'factory_bot_rails', '~> 4.8.2'
-
   gem 'rspec-core'
   gem 'rspec-expectations'
   gem 'rspec-mocks'
