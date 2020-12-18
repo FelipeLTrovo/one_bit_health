@@ -15,7 +15,7 @@ Criadores:
 - [Fabio Muller - linkedin](https://www.linkedin.com/in/fabiomullerdev/)  
 - [Fábio Vilhena - linkedin](https://www.linkedin.com/in/f%C3%A1bio-vilhena-468bab1b/)  
 - [Felipe Leal Trovo - linkedin](https://www.linkedin.com/in/felipe-leal-trovo-843328141/)  
-- [Igor Batista - linkedin](br.linkedin.com/in/igorcb)  
+- [Igor Batista - linkedin](https://www.linkedin.com/in/igorcb)  
 
 Visite o site:
 
