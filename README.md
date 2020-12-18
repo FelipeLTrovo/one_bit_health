@@ -19,7 +19,7 @@ Criadores:
 
 # App hospedado no heroku
 
-- [one_bit_health(https://one-bit-health.herokuapp.com/)  
+- [one_bit_health](https://one-bit-health.herokuapp.com/)  
 
 # Principais tecnologias/Gemas
 [Framework - Rails 6.0](https://rubygems.org/gems/rails/versions/4.2.6?locale=pt-BR)  
