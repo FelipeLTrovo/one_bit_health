@@ -17,9 +17,9 @@ Criadores:
 - [Felipe Leal Trovo - linkedin](https://www.linkedin.com/in/felipe-leal-trovo-843328141/)  
 - [Igor Batista - linkedin](br.linkedin.com/in/igorcb)  
 
-# App hospedado no heroku
+Visiti o site:
 
-- [one_bit_health](https://one-bit-health.herokuapp.com/)  
+- [https://one-bit-health.herokuapp.com/](https://one-bit-health.herokuapp.com/)  
 
 # Principais tecnologias/Gemas
 [Framework - Rails 6.0](https://rubygems.org/gems/rails/versions/4.2.6?locale=pt-BR)  
