@@ -17,7 +17,7 @@ Criadores:
 - [Felipe Leal Trovo - linkedin](https://www.linkedin.com/in/felipe-leal-trovo-843328141/)  
 - [Igor Batista - linkedin](br.linkedin.com/in/igorcb)  
 
-Visiti o site:
+Visite o site:
 
 - [https://one-bit-health.herokuapp.com/](https://one-bit-health.herokuapp.com/)  
 
